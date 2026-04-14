@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DevOps Engineer Roadmap 2026</title>
+</head>
+<body>
+  <h1>DevOps Engineer Roadmap (2026)</h1>
+  <p>By 2026, DevOps is defined by rapid deployments, automation, observability, and security. The global DevOps market is projected to reach <strong>$18.8B</strong> in 2026【33†L352-L358】, and employer demand remains strong【41†L64-L68】. This roadmap outlines the skills, tools, and milestones for a DevOps career, from fundamentals through advanced practices.</p>
+
+  <h2>Learning Phases & Timeline</h2>
+  <table>
+    <thead>
+      <tr><th>Phase / Duration</th><th>Focus Areas</th><th>Tools & Resources</th><th>Outcomes & Certs</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0–3 Months</td>
+        <td>
+          <ul>
+            <li><strong>Foundation:</strong> Linux admin, shell scripting, networking basics (TCP/IP, DNS, HTTP, TLS)【28†L245-L254】.</li>
+            <li><strong>Version Control:</strong> Git workflows, GitHub/GitLab.</li>
+            <li><strong>Programming:</strong> Python or Bash for automation.</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Practice with a Linux VM (CentOS/Ubuntu)</li>
+            <li>Git (GitHub or GitLab) for repos</li>
+            <li>Setup a simple web server (Apache/Nginx) and secure it with TLS</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Linux Foundation Certified (LFCS) or CompTIA Linux+</li>
+            <li>Build projects: personal web site on cloud VM with auto-deploy via Git</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>3–6 Months</td>
+        <td>
+          <ul>
+            <li><strong>CI/CD & Automation:</strong> Learn Jenkins, GitHub Actions or GitLab CI/CD to automate builds and tests【22†L5965-L5972】【49†L153-L162】.</li>
+            <li><strong>Containers:</strong> Docker fundamentals and containerize apps.</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Tools: Jenkins (or hosted CI like GitHub Actions), Docker Desktop</li>
+            <li>Hands-on: Build a CI pipeline that compiles code, runs tests, and builds a Docker image.</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Certificate: Jenkins or Docker Essentials (Docker Certified Associate prep)</li>
+            <li>Outcome: Deploy a test application via an automated pipeline.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>6–12 Months</td>
+        <td>
+          <ul>
+            <li><strong>Infrastructure as Code (IaC):</strong> Master Terraform or Pulumi for automated infrastructure【28†L204-L213】.</li>
+            <li><strong>Cloud Platforms:</strong> Deep dive into AWS/Azure/GCP services (compute, storage, networking).</li>
+            <li><strong>Version Control for Infra:</strong> Use GitOps principles (ArgoCD, Flux) to manage infra changes.</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Tools: Terraform (latest version), AWS CDK; GitLab/GitOps tools.</li>
+            <li>Project: Provision a VPC and Kubernetes cluster in AWS via Terraform; deploy an app using ArgoCD.</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Certificates: AWS Certified DevOps Engineer – Professional, or HashiCorp Terraform Associate</li>
+            <li>Outcome: Infrastructure automated and versioned; multi-cloud project (AWS+Azure).</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>12–18 Months</td>
+        <td>
+          <ul>
+            <li><strong>Container Orchestration:</strong> Kubernetes (deployment, services, ingress, Helm).</li>
+            <li><strong>Continuous Delivery:</strong> Blue-green/Canary deploys, GitOps workflows (ArgoCD/Flux).</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Tools: Kubernetes (v1.25+), Helm, Istio/Linkerd (service mesh basics).</li>
+            <li>Project: Set up a K8s cluster (minikube/kind or cloud), deploy microservices with Helm charts, and implement zero-downtime deploy.</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Certificate: Certified Kubernetes Administrator (CKA)</li>
+            <li>Outcome: Robust microservices architecture; reproducible deployments.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>18–24 Months</td>
+        <td>
+          <ul>
+            <li><strong>Monitoring & Observability:</strong> Implement full-stack observability (metrics, logs, traces)【22†L5965-L5972】.</li>
+            <li><strong>SRE Practices:</strong> Define SLIs/SLOs, error budgets, incident response strategies.</li>
+            <li><strong>Logging & Analytics:</strong> ELK/EFK stack or SaaS (Datadog, Splunk).</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Tools: Prometheus + Grafana, OpenTelemetry/Jaeger, ELK stack or Datadog.</li>
+            <li>Project: Monitor the running application; set up alerting (e.g. Prometheus alerts, or Opsgenie).</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Certificates: (optional) Google Professional DevOps Engineer</li>
+            <li>Outcome: Measurable reliability; faster incident resolution.  </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>24–36 Months</td>
+        <td>
+          <ul>
+            <li><strong>Security & Compliance (DevSecOps):</strong> Embed security in pipelines: SAST, DAST, and vulnerability scanning.  Supply-chain security (SBOM, signed artifacts).</li>
+            <li><strong>Advanced Topics:</strong> Platform engineering (developer portals, reusable infrastructure), cost optimization (FinOps practices), and AIOps integrations.</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Tools: Snyk/Trivy (container scanning), Vault (secrets), GitHub/GitLab security features.</li>
+            <li>Project: Implement a secure pipeline that scans code and containers, and automates remediation (e.g. fail builds on vulnerability).</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Certificates: Certified DevSecOps Professional (e.g. (ISC)² CDPSE, if available)</li>
+            <li>Outcome: End-to-end secure DevOps process, optimized for cost and compliance.</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Roles & Career Path</h2>
+  <p>After acquiring these skills, typical DevOps career paths include:</p>
+  <ul>
+    <li><strong>DevOps/SRE Engineer:</strong> Focus on CI/CD pipelines, reliability, and automation. Fluent in Linux, scripting, containers, and monitoring【28†L245-L254】【22†L5965-L5972】.</li>
+    <li><strong>Platform Engineer:</strong> Builds and maintains the internal dev platform/portal used by multiple squads (as predicted in Gartner’s 2026 forecast【13†L509-L517】【23†L220-L223】).</li>
+    <li><strong>Cloud Architect/Engineer:</strong> Designs multi-cloud infrastructure, cost models, and disaster recovery. Expert in public cloud services and IaC.</li>
+    <li><strong>DevSecOps Engineer:</strong> Specializes in embedding security (vulnerability management, compliance) into DevOps pipelines and environments【30†L42-L49】.</li>
+  </ul>
+  <p>Interview preparation should include explaining core CI/CD processes, demonstrating a sample IaC deployment, and discussing incident response. Open-ended questions may probe your understanding of SRE principles (SLIs/SLOs), disaster recovery, and system design for scalability.</p>
+
+  <h2>Sample Project Ideas</h2>
+  <ul>
+    <li><em>End-to-end CI/CD Pipeline:</em> Build a pipeline that pulls code, runs tests, creates Docker images, and deploys to Kubernetes. Use GitOps (ArgoCD) for deployment triggers.</li>
+    <li><em>Multi-Cloud Infrastructure:</em> Use Terraform to provision equivalent resources (VMs, networking) in AWS and GCP. Configure a failover between regions.</li>
+    <li><em>Observability Dashboard:</em> Deploy an application with Prometheus/Grafana monitoring, log aggregation, and alerting. Simulate an incident and use dashboards to identify it.</li>
+    <li><em>DevSecOps Pipeline:</em> Extend the CI/CD pipeline to include static code analysis (e.g. SonarQube) and container scanning (Trivy). Set up alerts if new vulnerabilities appear.</li>
+  </ul>
+
+  <h2>Recommended Resources</h2>
+  <ul>
+    <li>Google Cloud’s <a href="https://cloud.google.com/blog/products/devops-sre/announcing-2025-state-of-devops-report" target="_blank">2025 DORA Report</a> and <a href="https://cloud.google.com/blog/products/devops-sre/state-of-devops-report-2024" target="_blank">2024 DORA Report</a> for data on performance & AI in DevOps【3†L139-L147】【7†L122-L128】.</li>
+    <li>CNCF and <a href="https://www.cncf.io/" target="_blank">Cloud Native Computing Foundation</a> surveys for container and Kubernetes trends.</li>
+    <li>Vendor docs: AWS DevOps services (CodePipeline, CodeBuild, CodeDeploy)【49†L153-L162】, Azure DevOps documentation, and Kubernetes official docs.</li>
+    <li>Books/Guides: *“The DevOps Handbook”* (Gene Kim et al.), *“Site Reliability Engineering”* (Google SRE book).</li>
+    <li>Certifications: AWS/Azure/GCP DevOps certifications and Kubernetes certifications to validate skills.</li>
+  </ul>
+</body>
+</html>

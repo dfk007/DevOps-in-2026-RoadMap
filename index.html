@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevOps in 2026 Roadmap</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: rgba(9, 18, 34, 0.82);
+      --panel-2: rgba(13, 26, 48, 0.92);
+      --panel-3: #0f1d34;
+      --line: rgba(147, 197, 253, 0.18);
+      --text: #e5eefc;
+      --muted: #94a3b8;
+      --accent: #5eead4;
+      --accent-2: #60a5fa;
+      --accent-3: #f8e16c;
+      --danger: #fb7185;
+      --shadow: 0 20px 60px rgba(2, 6, 23, 0.55);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(96, 165, 250, 0.2), transparent 30%),
+        linear-gradient(180deg, #030712 0%, #08111f 38%, #07101d 100%);
+      min-height: 100vh;
+    }
+
+    .shell {
+      width: min(1500px, calc(100vw - 32px));
+      margin: 20px auto;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(8, 17, 31, 0.92), rgba(8, 17, 31, 0.74));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+
+    .hero {
+      position: relative;
+      padding: 40px 40px 22px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(94, 234, 212, 0.09), transparent 32%),
+        linear-gradient(180deg, rgba(96, 165, 250, 0.1), transparent 45%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 12px;
+      background: rgba(15, 23, 42, 0.66);
+      border: 1px solid rgba(94, 234, 212, 0.22);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 16px 0 12px;
+      font-size: clamp(36px, 4vw, 64px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 72ch;
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    .hero-card {
+      border: 1px solid rgba(248, 225, 108, 0.24);
+      background: linear-gradient(180deg, rgba(15, 29, 52, 0.95), rgba(7, 16, 29, 0.95));
+      border-radius: 24px;
+      padding: 20px;
+    }
+
+    .hero-card h2 {
+      margin: 0 0 10px;
+      font-size: 17px;
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px 40px 0;
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.58);
+      color: var(--muted);
+      padding: 12px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 160ms ease;
+    }
+
+    .tab.active,
+    .tab:hover {
+      color: #07111f;
+      background: linear-gradient(135deg, var(--accent), #b6f7ee);
+      border-color: transparent;
+      transform: translateY(-1px);
+    }
+
+    .tab-panels {
+      padding: 24px 40px 40px;
+    }
+
+    .panel {
+      display: none;
+      animation: fade 220ms ease;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+
+    .metric span {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .priority-list,
+    .stack-list,
+    .resource-list,
+    .signal-list,
+    .mini-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .priority-item,
+    .stack-item,
+    .resource-item,
+    .signal-item {
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.58);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .priority-item h4,
+    .stack-item h4,
+    .signal-item h4 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(96, 165, 250, 0.1);
+      border: 1px solid rgba(96, 165, 250, 0.18);
+      color: #dbeafe;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .badge.hot {
+      color: #fff8c5;
+      background: rgba(248, 225, 108, 0.1);
+      border-color: rgba(248, 225, 108, 0.22);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-step {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .phase {
+      font-weight: 800;
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-top: 2px;
+    }
+
+    .roadmap-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) 360px;
+      gap: 18px;
+      min-height: 840px;
+    }
+
+    .roadmap-board {
+      position: relative;
+      overflow: auto;
+      padding: 24px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(7, 16, 29, 0.98), rgba(9, 18, 34, 0.98)),
+        radial-gradient(circle at top, rgba(96, 165, 250, 0.06), transparent 34%);
+    }
+
+    .roadmap {
+      position: relative;
+      min-width: 1180px;
+      min-height: 1320px;
+      padding: 30px;
+      border-radius: 24px;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .roadmap-title {
+      position: absolute;
+      left: 435px;
+      top: 12px;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .node {
+      position: absolute;
+      width: 168px;
+      min-height: 58px;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(19, 31, 54, 0.96));
+      color: var(--text);
+      padding: 12px 14px;
+      box-shadow: 0 12px 30px rgba(2, 6, 23, 0.3);
+      cursor: pointer;
+      text-align: left;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .node:hover,
+    .node.active {
+      transform: translateY(-2px) scale(1.01);
+      border-color: rgba(94, 234, 212, 0.5);
+      box-shadow: 0 16px 40px rgba(20, 184, 166, 0.15);
+    }
+
+    .node small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .node.core {
+      background: linear-gradient(180deg, rgba(32, 58, 104, 0.95), rgba(23, 43, 79, 0.95));
+      border-color: rgba(96, 165, 250, 0.36);
+    }
+
+    .node.ai {
+      background: linear-gradient(180deg, rgba(18, 61, 60, 0.96), rgba(13, 43, 43, 0.96));
+      border-color: rgba(94, 234, 212, 0.34);
+    }
+
+    .node.highlight {
+      background: linear-gradient(180deg, rgba(77, 71, 23, 0.96), rgba(48, 43, 16, 0.96));
+      border-color: rgba(248, 225, 108, 0.34);
+    }
+
+    .connector {
+      position: absolute;
+      background: linear-gradient(180deg, rgba(96, 165, 250, 0.55), rgba(94, 234, 212, 0.55));
+      opacity: 0.9;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .connector.h {
+      height: 2px;
+    }
+
+    .connector.v {
+      width: 2px;
+    }
+
+    .drawer {
+      position: sticky;
+      top: 18px;
+      align-self: start;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(9, 18, 34, 0.96));
+      min-height: 760px;
+      overflow: hidden;
+    }
+
+    .drawer-header {
+      padding: 24px 24px 18px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(96, 165, 250, 0.1), transparent 100%);
+    }
+
+    .drawer-header p,
+    .drawer-body p,
+    .drawer-body li {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .drawer-body {
+      padding: 20px 24px 28px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .resource-item {
+      padding: 14px 16px;
+    }
+
+    .resource-item a {
+      color: #dff8ff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .resource-item a:hover {
+      text-decoration: underline;
+    }
+
+    .resource-type {
+      display: inline-flex;
+      margin-bottom: 8px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #07111f;
+      background: linear-gradient(135deg, var(--accent), #ccfbf1);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .legend i {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .i-core { background: var(--accent-2); }
+    .i-highlight { background: var(--accent-3); }
+    .i-ai { background: var(--accent); }
+
+    .footer-note {
+      padding: 0 40px 34px;
+      color: #7f8ea5;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .content-grid,
+      .roadmap-layout,
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .drawer {
+        position: relative;
+        top: 0;
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: calc(100vw - 14px);
+        margin: 7px auto;
+        border-radius: 18px;
+      }
+
+      .hero,
+      .tabs,
+      .tab-panels,
+      .footer-note {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .hero {
+        padding-top: 26px;
+      }
+
+      h1 {
+        max-width: none;
+      }
+
+      .roadmap-board {
+        padding: 12px;
+      }
+
+      .roadmap {
+        min-width: 1120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">DevOps 2026 • Hireable Skills Roadmap</div>
+          <h1>Master the foundations. Layer AI on top.</h1>
+          <p>
+            The DevOps market in 2026 rewards engineers who can operate reliable delivery systems,
+            automate infrastructure, and use AI to accelerate incident response, deployment safety,
+            and platform productivity. This page organizes the essential concepts into a practical,
+            modern learning path.
+          </p>
+        </div>
+        <aside class="hero-card">
+          <h2>Primary hiring signal</h2>
+          <ul>
+            <li>Strong Linux, networking, scripting, and cloud fundamentals.</li>
+            <li>Real CI/CD, Kubernetes, IaC, observability, and security experience.</li>
+            <li>Clear use of AI for debugging, automation, remediation, and delivery quality.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="DevOps roadmap tabs">
+      <button class="tab active" data-tab="overview">Executive Overview</button>
+      <button class="tab" data-tab="skills">Must-Master Skills</button>
+      <button class="tab" data-tab="roadmap">Interactive Roadmap</button>
+    </nav>
+
+    <main class="tab-panels">
+      <section class="panel active" id="overview">
+        <div class="metrics">
+          <article class="metric">
+            <strong>1</strong>
+            <span>Start with operating system, networking, Git, containers, and cloud basics before touching advanced AI workflows.</span>
+          </article>
+          <article class="metric">
+            <strong>2</strong>
+            <span>Become excellent at CI/CD, Kubernetes, Terraform, monitoring, and release safety.</span>
+          </article>
+          <article class="metric">
+            <strong>3</strong>
+            <span>Then add AI-assisted operations: copilots, log summarization, incident triage, and remediation agents.</span>
+          </article>
+          <article class="metric">
+            <strong>4</strong>
+            <span>Hiring favors demonstrable systems thinking, production ownership, and automation depth over buzzwords.</span>
+          </article>
+        </div>
+
+        <div class="content-grid">
+          <article class="card">
+            <h3>What DevOps employers want in 2026</h3>
+            <div class="priority-list">
+              <div class="priority-item">
+                <h4>Foundations are assumed, not optional</h4>
+                <p>Linux administration, shell usage, TCP/IP basics, DNS, HTTP, TLS, Git, and cloud primitives are the baseline. If these are weak, advanced tooling will not save you.</p>
+                <div class="badge-row">
+                  <span class="badge">Linux</span>
+                  <span class="badge">Networking</span>
+                  <span class="badge">Git</span>
+                  <span class="badge">Cloud Basics</span>
+                </div>
+              </div>
+              <div class="priority-item">
+                <h4>Delivery engineering must be production-grade</h4>
+                <p>You need to design repeatable pipelines, artifact flows, environment promotion, rollback paths, canary releases, and policy gates that teams trust in production.</p>
+                <div class="badge-row">
+                  <span class="badge hot">CI/CD</span>
+                  <span class="badge hot">Blue-Green</span>
+                  <span class="badge hot">Canary</span>
+                  <span class="badge hot">Rollback</span>
+                </div>
+              </div>
+              <div class="priority-item">
+                <h4>AI is a force multiplier, not a replacement for fundamentals</h4>
+                <p>Use LLMs and agents to draft Terraform, explain alerts, summarize logs, suggest fixes, and reduce MTTR, but only after you can validate outputs safely.</p>
+                <div class="badge-row">
+                  <span class="badge">AIOps</span>
+                  <span class="badge">LLM Assistants</span>
+                  <span class="badge">AI Agents</span>
+                  <span class="badge">Guardrails</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <aside class="card">
+            <h3>Recommended learning sequence</h3>
+            <div class="timeline">
+              <div class="timeline-step">
+                <div class="phase">Phase 1</div>
+                <div>
+                  <strong>Core systems</strong>
+                  <p>Linux, Bash, Python, Git, networking, containers, and one cloud platform.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="phase">Phase 2</div>
+                <div>
+                  <strong>Delivery and infrastructure</strong>
+                  <p>CI/CD, Terraform, Kubernetes, Helm, secret management, and artifact registries.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="phase">Phase 3</div>
+                <div>
+                  <strong>Reliability and security</strong>
+                  <p>Observability, SLOs, incident response, supply chain security, policy-as-code, and runtime hardening.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="phase">Phase 4</div>
+                <div>
+                  <strong>AI-enabled operations</strong>
+                  <p>Copilots, LLM-assisted debugging, predictive deployments, auto-remediation, and evaluation loops.</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel" id="skills">
+        <div class="content-grid">
+          <article class="card">
+            <h3>Essential Skills & Concepts for DevOps in 2026</h3>
+            <div class="stack-list">
+              <div class="stack-item">
+                <h4>1. Linux, shell, and automation</h4>
+                <p>Master process management, systemd, permissions, package management, filesystems, logs, Bash, and Python scripting. This is the operating bedrock of DevOps.</p>
+              </div>
+              <div class="stack-item">
+                <h4>2. Networking and web fundamentals</h4>
+                <p>Know DNS, routing, subnets, reverse proxies, load balancers, HTTP, TLS, certificates, firewalls, VPNs, and service discovery.</p>
+              </div>
+              <div class="stack-item">
+                <h4>3. Git, repositories, and collaboration flows</h4>
+                <p>Understand branching models, pull requests, tagging, release versioning, trunk-based development, and repository hygiene.</p>
+              </div>
+              <div class="stack-item">
+                <h4>4. Containers and Kubernetes</h4>
+                <p>Build images, optimize Dockerfiles, manage registries, read cluster events, debug pods, work with services, ingress, Helm, and GitOps controllers.</p>
+              </div>
+              <div class="stack-item">
+                <h4>5. Infrastructure as Code</h4>
+                <p>Write reusable Terraform modules, understand state, drift, workspaces, remote backends, policy enforcement, and reviewable change plans.</p>
+              </div>
+              <div class="stack-item">
+                <h4>6. CI/CD and deployment strategies</h4>
+                <p>Build pipelines that test, scan, package, publish, deploy, verify, and rollback. Blue-green, canary, progressive delivery, and environment promotion are core hiring skills.</p>
+              </div>
+              <div class="stack-item">
+                <h4>7. Cloud platform depth</h4>
+                <p>Go deep on at least one of AWS, Azure, or GCP. You should be fluent in IAM, compute, networking, storage, managed databases, observability, and cost controls.</p>
+              </div>
+              <div class="stack-item">
+                <h4>8. Observability and reliability engineering</h4>
+                <p>Collect metrics, logs, traces, build dashboards, define SLOs, manage alerts, run incident response, and learn postmortem discipline.</p>
+              </div>
+              <div class="stack-item">
+                <h4>9. DevSecOps and supply chain security</h4>
+                <p>Integrate secret handling, image scanning, SBOMs, provenance, dependency policies, least privilege, admission controls, and runtime security.</p>
+              </div>
+              <div class="stack-item">
+                <h4>10. AIOps and LLM integration</h4>
+                <p>This is the strongest differentiator. Use AI to draft IaC, explain incidents, summarize logs, generate runbooks, predict risky changes, and power self-healing workflows.</p>
+              </div>
+            </div>
+          </article>
+
+          <aside class="card">
+            <h3>Modern AI-driven practices</h3>
+            <div class="signal-list">
+              <div class="signal-item">
+                <h4>AI-powered code and config review</h4>
+                <p>Use assistants to catch misconfigurations, insecure IAM, poor Docker layering, and risky pipeline steps before merge.</p>
+              </div>
+              <div class="signal-item">
+                <h4>Predictive deployment analysis</h4>
+                <p>Analyze commit history, test health, and change blast radius to identify risky releases before they hit production.</p>
+              </div>
+              <div class="signal-item">
+                <h4>Auto-remediation loops</h4>
+                <p>Trigger safe rollback, restart, scaling, failover, or ticket creation based on confidence thresholds and policy gates.</p>
+              </div>
+              <div class="signal-item">
+                <h4>AI agents with guardrails</h4>
+                <p>Let agents monitor infrastructure and resolve repetitive incidents, but keep approval boundaries, audit trails, and blast-radius limits.</p>
+              </div>
+            </div>
+
+            <h3 style="margin-top: 24px;">What makes you hireable</h3>
+            <div class="mini-list">
+              <div class="resource-item">
+                <span class="resource-type">Portfolio</span>
+                <p>Show one real platform project: Terraform + Kubernetes + CI/CD + observability + security + AI-assisted ops.</p>
+              </div>
+              <div class="resource-item">
+                <span class="resource-type">Depth</span>
+                <p>Pick one primary path and go deep: DevOps platform engineering, SRE, or cloud infrastructure.</p>
+              </div>
+              <div class="resource-item">
+                <span class="resource-type">Proof</span>
+                <p>Employers trust measurable outcomes: lower deployment risk, faster recovery, safer infra changes, and cleaner automation.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel" id="roadmap">
+        <div class="legend">
+          <span><i class="i-core"></i> Foundational</span>
+          <span><i class="i-highlight"></i> Core hiring priority</span>
+          <span><i class="i-ai"></i> AI-enabled DevOps</span>
+        </div>
+
+        <div class="roadmap-layout">
+          <div class="roadmap-board">
+            <div class="roadmap" id="roadmapCanvas">
+              <div class="roadmap-title">DevOps 2026 Interactive Roadmap</div>
+
+              <div class="connector h" style="left: 500px; top: 108px; width: 2px;"></div>
+              <div class="connector v" style="left: 501px; top: 108px; height: 76px;"></div>
+              <div class="connector h" style="left: 501px; top: 184px; width: 300px;"></div>
+              <div class="connector h" style="left: 301px; top: 184px; width: 200px;"></div>
+              <div class="connector h" style="left: 801px; top: 184px; width: 210px;"></div>
+              <div class="connector v" style="left: 300px; top: 184px; height: 154px;"></div>
+              <div class="connector v" style="left: 1010px; top: 184px; height: 154px;"></div>
+              <div class="connector h" style="left: 300px; top: 338px; width: 201px;"></div>
+              <div class="connector h" style="left: 801px; top: 338px; width: 209px;"></div>
+              <div class="connector v" style="left: 501px; top: 184px; height: 260px;"></div>
+              <div class="connector v" style="left: 801px; top: 184px; height: 260px;"></div>
+              <div class="connector h" style="left: 501px; top: 444px; width: 300px;"></div>
+              <div class="connector v" style="left: 652px; top: 444px; height: 188px;"></div>
+              <div class="connector h" style="left: 260px; top: 632px; width: 392px;"></div>
+              <div class="connector h" style="left: 652px; top: 632px; width: 388px;"></div>
+              <div class="connector v" style="left: 260px; top: 632px; height: 182px;"></div>
+              <div class="connector v" style="left: 1040px; top: 632px; height: 182px;"></div>
+              <div class="connector h" style="left: 260px; top: 814px; width: 392px;"></div>
+              <div class="connector h" style="left: 652px; top: 814px; width: 388px;"></div>
+              <div class="connector v" style="left: 652px; top: 814px; height: 178px;"></div>
+              <div class="connector h" style="left: 420px; top: 992px; width: 232px;"></div>
+              <div class="connector h" style="left: 652px; top: 992px; width: 230px;"></div>
+
+              <button class="node core active" style="left: 416px; top: 48px;" data-topic="devops-core">DevOps 2026 Core<small>Foundations first, AI layered on top</small></button>
+
+              <button class="node highlight" style="left: 132px; top: 154px;" data-topic="linux">Linux & Shell<small>Processes, logs, permissions, Bash</small></button>
+              <button class="node core" style="left: 416px; top: 154px;" data-topic="networking">Networking<small>DNS, HTTP, TLS, LB, VPC</small></button>
+              <button class="node highlight" style="left: 720px; top: 154px;" data-topic="git">Git & Collaboration<small>PRs, tags, releases, trunk-based flow</small></button>
+              <button class="node core" style="left: 926px; top: 154px;" data-topic="programming">Automation Code<small>Bash, Python, APIs, data handling</small></button>
+
+              <button class="node core" style="left: 132px; top: 308px;" data-topic="containers">Containers<small>Dockerfiles, images, registries</small></button>
+              <button class="node highlight" style="left: 416px; top: 414px;" data-topic="cicd">CI/CD Delivery<small>Test, build, scan, deploy, rollback</small></button>
+              <button class="node core" style="left: 720px; top: 308px;" data-topic="cloud">Cloud Platform<small>AWS, Azure, or GCP depth</small></button>
+              <button class="node highlight" style="left: 926px; top: 308px;" data-topic="iac">Infrastructure as Code<small>Terraform modules, state, drift</small></button>
+
+              <button class="node highlight" style="left: 176px; top: 602px;" data-topic="kubernetes">Kubernetes<small>Pods, services, ingress, Helm</small></button>
+              <button class="node core" style="left: 430px; top: 602px;" data-topic="gitops">GitOps<small>Argo CD / Flux, reconciliation</small></button>
+              <button class="node core" style="left: 748px; top: 602px;" data-topic="security">DevSecOps<small>Secrets, SBOM, policy, provenance</small></button>
+              <button class="node highlight" style="left: 960px; top: 602px;" data-topic="observability">Observability<small>Metrics, logs, traces, SLOs</small></button>
+
+              <button class="node core" style="left: 176px; top: 784px;" data-topic="incident-response">Incident Response<small>Alerts, runbooks, postmortems</small></button>
+              <button class="node highlight" style="left: 430px; top: 784px;" data-topic="release-strategy">Progressive Delivery<small>Canary, blue-green, verification</small></button>
+              <button class="node ai" style="left: 748px; top: 784px;" data-topic="aiops">AIOps & LLMs<small>Log summaries, fix suggestions, runbooks</small></button>
+              <button class="node ai" style="left: 960px; top: 784px;" data-topic="automation-agents">AI Agents<small>Auto-remediation with guardrails</small></button>
+
+              <button class="node ai" style="left: 336px; top: 962px;" data-topic="predictive-deployments">Predictive Deployments<small>Risk scoring and safer releases</small></button>
+              <button class="node highlight" style="left: 652px; top: 962px;" data-topic="platform-engineering">Platform Engineering<small>Golden paths, reusable workflows</small></button>
+            </div>
+          </div>
+
+          <aside class="drawer" id="topicDrawer" aria-live="polite">
+            <div class="drawer-header">
+              <div class="eyebrow" id="drawerCategory">Roadmap Topic</div>
+              <h3 id="drawerTitle" style="margin: 14px 0 10px; font-size: 30px;">DevOps 2026 Core</h3>
+              <p id="drawerSummary">Use the roadmap as a layered system. Learn the base operating model first, then move into delivery automation, reliability, security, and finally AI-assisted operations.</p>
+            </div>
+            <div class="drawer-body">
+              <section>
+                <h4 style="margin: 0 0 10px;">Why it matters</h4>
+                <p id="drawerWhy"></p>
+              </section>
+              <section>
+                <h4 style="margin: 0 0 10px;">Must know</h4>
+                <div class="badge-row" id="drawerMustKnow"></div>
+              </section>
+              <section>
+                <h4 style="margin: 0 0 10px;">Resources</h4>
+                <div class="resource-list" id="drawerResources"></div>
+              </section>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <div class="footer-note">
+      Built as a single self-contained HTML file in the current working directory. Open `index.html` in a browser.
+    </div>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.panel');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.classList.remove('active'));
+        panels.forEach((p) => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    const topicData = {
+      'devops-core': {
+        category: 'Core Path',
+        title: 'DevOps 2026 Core',
+        summary: 'The hireable path is straightforward: master systems and delivery fundamentals first, then use AI to improve speed, quality, and resilience.',
+        why: 'Teams still hire for ownership of real infrastructure, delivery workflows, and production reliability. AI matters most when it helps an already-capable engineer reduce toil and improve operational outcomes.',
+        mustKnow: ['Linux', 'Networking', 'CI/CD', 'Kubernetes', 'Terraform', 'Observability', 'Security', 'AIOps'],
+        resources: [
+          { type: 'Guide', label: 'Google SRE Book', url: 'https://sre.google/books/' },
+          { type: 'Guide', label: 'AWS Well-Architected', url: 'https://aws.amazon.com/architecture/well-architected/' },
+          { type: 'Roadmap', label: 'DevOps Lifecycle Overview', url: 'https://www.atlassian.com/devops' }
+        ]
+      },
+      linux: {
+        category: 'Foundational',
+        title: 'Linux & Shell',
+        summary: 'You need fluency in the operating system where applications, containers, and automation actually run.',
+        why: 'Debugging deployments and incidents almost always comes back to logs, processes, networking, files, permissions, or shell automation. This is the practical floor of the role.',
+        mustKnow: ['systemd', 'journalctl', 'grep/sed/awk basics', 'permissions', 'ssh', 'Bash scripting'],
+        resources: [
+          { type: 'Course', label: 'The Linux Command Line', url: 'https://linuxcommand.org/tlcl.php' },
+          { type: 'Course', label: 'Introduction to Linux', url: 'https://training.linuxfoundation.org/training/introduction-to-linux/' },
+          { type: 'Reference', label: 'Explainshell', url: 'https://explainshell.com/' }
+        ]
+      },
+      networking: {
+        category: 'Foundational',
+        title: 'Networking',
+        summary: 'Modern DevOps engineers need to understand how packets, names, certificates, and proxies affect reliability and deployment safety.',
+        why: 'Misconfigured DNS, TLS, ingress, routing, firewalls, and load balancing cause real production failures. Strong networking knowledge shortens diagnosis time dramatically.',
+        mustKnow: ['DNS', 'HTTP/HTTPS', 'TLS certs', 'load balancers', 'subnets', 'routing', 'reverse proxies'],
+        resources: [
+          { type: 'Guide', label: 'Cloudflare Learning Center', url: 'https://www.cloudflare.com/learning/' },
+          { type: 'Book', label: 'HTTP: The Definitive Guide', url: 'https://www.oreilly.com/library/view/http-the-definitive/1565925092/' },
+          { type: 'Reference', label: 'DigitalOcean Networking Concepts', url: 'https://www.digitalocean.com/community/tutorials/an-introduction-to-networking-terminology-interfaces-and-protocols' }
+        ]
+      },
+      git: {
+        category: 'Foundational',
+        title: 'Git & Collaboration',
+        summary: 'DevOps work is deeply tied to versioned infrastructure, pipeline code, release flows, and collaborative change review.',
+        why: 'Infrastructure as code, GitOps, and deployment automation all depend on clean change control, repeatability, and readable history.',
+        mustKnow: ['branching', 'rebase vs merge', 'tags', 'release notes', 'PR review', 'trunk-based development'],
+        resources: [
+          { type: 'Book', label: 'Pro Git', url: 'https://git-scm.com/book/en/v2' },
+          { type: 'Guide', label: 'Atlassian Git Tutorials', url: 'https://www.atlassian.com/git/tutorials' },
+          { type: 'Guide', label: 'Trunk-Based Development', url: 'https://trunkbaseddevelopment.com/' }
+        ]
+      },
+      programming: {
+        category: 'Foundational',
+        title: 'Automation Code',
+        summary: 'Shell alone is not enough. Python or Go-style scripting depth helps you automate APIs, data transforms, and incident workflows.',
+        why: 'Strong automation code lets you glue systems together, build tooling, parse outputs, trigger remediations, and validate AI-generated changes safely.',
+        mustKnow: ['Python', 'REST APIs', 'JSON/YAML', 'CLI tooling', 'testing scripts', 'error handling'],
+        resources: [
+          { type: 'Course', label: 'Automate the Boring Stuff with Python', url: 'https://automatetheboringstuff.com/' },
+          { type: 'Guide', label: 'Real Python', url: 'https://realpython.com/' },
+          { type: 'Reference', label: 'httpie', url: 'https://httpie.io/' }
+        ]
+      },
+      containers: {
+        category: 'Core Skill',
+        title: 'Containers',
+        summary: 'Container fluency includes build efficiency, runtime behavior, registry workflows, security, and debugging image-related issues.',
+        why: 'Containers are still the packaging unit for most modern platforms. Understanding image structure and runtime tradeoffs directly impacts cost, speed, and security.',
+        mustKnow: ['Dockerfile layering', 'multi-stage builds', 'image scanning', 'registries', 'distroless images', 'runtime limits'],
+        resources: [
+          { type: 'Guide', label: 'Docker Docs', url: 'https://docs.docker.com/' },
+          { type: 'Guide', label: 'Container Best Practices', url: 'https://cloud.google.com/architecture/best-practices-for-building-containers' },
+          { type: 'Tool', label: 'Dive Image Explorer', url: 'https://github.com/wagoodman/dive' }
+        ]
+      },
+      cicd: {
+        category: 'Core Hiring Priority',
+        title: 'CI/CD Delivery',
+        summary: 'End-to-end delivery design is non-negotiable in 2026. Build systems need to be fast, observable, safe, and rollback-ready.',
+        why: 'The most visible DevOps value comes from reliable software delivery. Employers look for engineers who can reduce lead time without raising deployment risk.',
+        mustKnow: ['pipeline stages', 'artifact management', 'approvals', 'rollback', 'blue-green', 'canary', 'progressive delivery'],
+        resources: [
+          { type: 'Guide', label: 'GitHub Actions Docs', url: 'https://docs.github.com/actions' },
+          { type: 'Guide', label: 'GitLab CI/CD Docs', url: 'https://docs.gitlab.com/ee/ci/' },
+          { type: 'Guide', label: 'Argo Rollouts', url: 'https://argo-rollouts.readthedocs.io/' }
+        ]
+      },
+      cloud: {
+        category: 'Core Skill',
+        title: 'Cloud Platform',
+        summary: 'Go deep on one provider first. Breadth matters later, but depth in one ecosystem is what gets you productive and hireable.',
+        why: 'Real environments are provider-specific. IAM, networking, compute, managed services, and operational tooling vary in important ways.',
+        mustKnow: ['IAM', 'VPC/VNet', 'compute', 'managed DBs', 'object storage', 'cost control', 'logging'],
+        resources: [
+          { type: 'AWS', label: 'AWS Skill Builder', url: 'https://skillbuilder.aws/' },
+          { type: 'Azure', label: 'Microsoft Learn Azure', url: 'https://learn.microsoft.com/azure/' },
+          { type: 'GCP', label: 'Google Cloud Training', url: 'https://cloud.google.com/learn/training' }
+        ]
+      },
+      iac: {
+        category: 'Core Hiring Priority',
+        title: 'Infrastructure as Code',
+        summary: 'IaC is how infrastructure becomes reviewable, repeatable, and scalable across teams and environments.',
+        why: 'Without IaC, environments drift, reviews are weak, and scale becomes painful. Terraform remains one of the clearest signals of DevOps competence.',
+        mustKnow: ['Terraform modules', 'state backends', 'plans', 'drift detection', 'variables', 'policy as code'],
+        resources: [
+          { type: 'Guide', label: 'Terraform Docs', url: 'https://developer.hashicorp.com/terraform/docs' },
+          { type: 'Guide', label: 'Terraform Best Practices', url: 'https://www.terraform-best-practices.com/' },
+          { type: 'Tool', label: 'OpenTofu', url: 'https://opentofu.org/' }
+        ]
+      },
+      kubernetes: {
+        category: 'Core Hiring Priority',
+        title: 'Kubernetes',
+        summary: 'Production-grade Kubernetes skill means more than deploying YAML. You should understand how the platform actually behaves under load and failure.',
+        why: 'Kubernetes still powers a huge share of platform teams and internal developer platforms. Deep debugging ability is highly valued.',
+        mustKnow: ['pods', 'deployments', 'services', 'ingress', 'Helm', 'resource requests', 'events', 'kubectl debugging'],
+        resources: [
+          { type: 'Guide', label: 'Kubernetes Docs', url: 'https://kubernetes.io/docs/home/' },
+          { type: 'Course', label: 'Kubernetes Basics', url: 'https://kubernetes.io/docs/tutorials/kubernetes-basics/' },
+          { type: 'Guide', label: 'Helm Docs', url: 'https://helm.sh/docs/' }
+        ]
+      },
+      gitops: {
+        category: 'Core Skill',
+        title: 'GitOps',
+        summary: 'GitOps turns Git into the desired state authority for clusters and environments.',
+        why: 'This improves auditability, reproducibility, and rollback confidence, especially for Kubernetes-heavy teams and platform engineering groups.',
+        mustKnow: ['desired state', 'reconciliation loops', 'drift', 'Argo CD', 'Flux', 'pull-based deploys'],
+        resources: [
+          { type: 'Guide', label: 'Argo CD Docs', url: 'https://argo-cd.readthedocs.io/' },
+          { type: 'Guide', label: 'Flux Docs', url: 'https://fluxcd.io/docs/' },
+          { type: 'Guide', label: 'OpenGitOps Principles', url: 'https://opengitops.dev/' }
+        ]
+      },
+      security: {
+        category: 'Core Skill',
+        title: 'DevSecOps',
+        summary: 'Security in 2026 is embedded into delivery pipelines, runtime platforms, and software supply chains.',
+        why: 'Teams expect DevOps engineers to own secrets, identity boundaries, image hygiene, provenance, and policy enforcement as part of normal delivery work.',
+        mustKnow: ['secrets management', 'SAST/DAST basics', 'SBOMs', 'signing', 'least privilege', 'admission control'],
+        resources: [
+          { type: 'Guide', label: 'OWASP DevSecOps Guideline', url: 'https://owasp.org/www-project-devsecops-guideline/' },
+          { type: 'Tool', label: 'Trivy', url: 'https://trivy.dev/' },
+          { type: 'Guide', label: 'Sigstore', url: 'https://www.sigstore.dev/' }
+        ]
+      },
+      observability: {
+        category: 'Core Hiring Priority',
+        title: 'Observability',
+        summary: 'You should be able to instrument systems, build useful dashboards, reduce noisy alerts, and tie telemetry to business impact.',
+        why: 'Reliable systems require fast detection and diagnosis. Observability is what makes complex platforms supportable.',
+        mustKnow: ['Prometheus', 'Grafana', 'logs', 'OpenTelemetry', 'traces', 'SLOs', 'alert tuning'],
+        resources: [
+          { type: 'Guide', label: 'Prometheus Docs', url: 'https://prometheus.io/docs/introduction/overview/' },
+          { type: 'Guide', label: 'Grafana Docs', url: 'https://grafana.com/docs/' },
+          { type: 'Guide', label: 'OpenTelemetry Docs', url: 'https://opentelemetry.io/docs/' }
+        ]
+      },
+      'incident-response': {
+        category: 'Reliability',
+        title: 'Incident Response',
+        summary: 'Being hireable means you can respond under pressure: assess blast radius, stabilize, communicate, and learn from failures.',
+        why: 'Production ownership is one of the clearest distinctions between theoretical knowledge and operational competence.',
+        mustKnow: ['severity levels', 'runbooks', 'on-call hygiene', 'rollback', 'communication', 'postmortems'],
+        resources: [
+          { type: 'Guide', label: 'PagerDuty Incident Response', url: 'https://www.pagerduty.com/resources/learn/incident-response/' },
+          { type: 'Book', label: 'Seeking SRE', url: 'https://www.oreilly.com/library/view/seeking-sre/9781491978856/' },
+          { type: 'Guide', label: 'Google Incident Management', url: 'https://sre.google/workbook/incident-response/' }
+        ]
+      },
+      'release-strategy': {
+        category: 'Reliability',
+        title: 'Progressive Delivery',
+        summary: 'Safe releases are a major differentiator. Engineers who can limit blast radius and verify deployments before full rollout are highly valuable.',
+        why: 'Blue-green, canary, feature flags, and automated verification reduce the cost of change while maintaining delivery speed.',
+        mustKnow: ['canary', 'blue-green', 'feature flags', 'health checks', 'verification', 'rollback automation'],
+        resources: [
+          { type: 'Guide', label: 'Argo Rollouts', url: 'https://argo-rollouts.readthedocs.io/' },
+          { type: 'Guide', label: 'LaunchDarkly Guides', url: 'https://launchdarkly.com/guides/' },
+          { type: 'Guide', label: 'Progressive Delivery Foundation', url: 'https://opencd.foundation/' }
+        ]
+      },
+      aiops: {
+        category: 'AI-Enabled DevOps',
+        title: 'AIOps & LLM Integration',
+        summary: 'This is the biggest 2026 differentiator: using AI to accelerate configuration work, debugging, telemetry analysis, and operational response.',
+        why: 'The market increasingly expects DevOps engineers to use AI tools for speed and insight. The best engineers combine AI output with strong technical judgment and safety controls.',
+        mustKnow: ['prompting for infra tasks', 'log summarization', 'config generation', 'change review', 'RAG on runbooks', 'human approval loops'],
+        resources: [
+          { type: 'Guide', label: 'OpenAI API Docs', url: 'https://platform.openai.com/docs/overview' },
+          { type: 'Guide', label: 'GitHub Copilot for Docs', url: 'https://docs.github.com/copilot' },
+          { type: 'Guide', label: 'AWS on Generative AI', url: 'https://aws.amazon.com/generative-ai/' }
+        ]
+      },
+      'automation-agents': {
+        category: 'AI-Enabled DevOps',
+        title: 'AI Agents',
+        summary: 'Agents can monitor systems, propose fixes, and execute bounded actions, but only with strict guardrails and observability.',
+        why: 'The next layer after copilots is autonomous or semi-autonomous operations. Employers will value engineers who can design safe agent workflows with auditability.',
+        mustKnow: ['approval steps', 'blast radius controls', 'tool permissions', 'audit logs', 'fallbacks', 'safe execution boundaries'],
+        resources: [
+          { type: 'Guide', label: 'LangChain Overview', url: 'https://python.langchain.com/docs/introduction/' },
+          { type: 'Guide', label: 'Model Context Protocol', url: 'https://modelcontextprotocol.io/' },
+          { type: 'Guide', label: 'OpenTelemetry for AI systems', url: 'https://opentelemetry.io/' }
+        ]
+      },
+      'predictive-deployments': {
+        category: 'AI-Enabled DevOps',
+        title: 'Predictive Deployments',
+        summary: 'Use historical signals to score deployment risk before release and reduce production failures.',
+        why: 'This is a practical high-value application of AI in DevOps: safer releases, reduced incident rates, and improved deployment confidence.',
+        mustKnow: ['risk scoring', 'test health signals', 'change blast radius', 'deployment telemetry', 'rollback triggers'],
+        resources: [
+          { type: 'Guide', label: 'DORA Metrics', url: 'https://dora.dev/' },
+          { type: 'Guide', label: 'Google Cloud on CI/CD Metrics', url: 'https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery' },
+          { type: 'Guide', label: 'MLOps Principles', url: 'https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning' }
+        ]
+      },
+      'platform-engineering': {
+        category: 'Scaling Path',
+        title: 'Platform Engineering',
+        summary: 'Mature DevOps teams increasingly evolve into platform teams that provide paved roads, reusable tooling, and self-service workflows.',
+        why: 'This is often the long-term career growth path: less ticket-driven work, more product thinking for internal developers, and stronger leverage across the organization.',
+        mustKnow: ['golden paths', 'self-service', 'templates', 'Backstage or portals', 'developer experience', 'platform metrics'],
+        resources: [
+          { type: 'Guide', label: 'Platform Engineering', url: 'https://platformengineering.org/' },
+          { type: 'Tool', label: 'Backstage', url: 'https://backstage.io/' },
+          { type: 'Report', label: 'Humanitec Platform Engineering Reports', url: 'https://humanitec.com/platform-engineering-reports' }
+        ]
+      }
+    };
+
+    const drawerCategory = document.getElementById('drawerCategory');
+    const drawerTitle = document.getElementById('drawerTitle');
+    const drawerSummary = document.getElementById('drawerSummary');
+    const drawerWhy = document.getElementById('drawerWhy');
+    const drawerMustKnow = document.getElementById('drawerMustKnow');
+    const drawerResources = document.getElementById('drawerResources');
+    const nodes = document.querySelectorAll('.node');
+
+    function renderTopic(key) {
+      const topic = topicData[key];
+      if (!topic) return;
+
+      drawerCategory.textContent = topic.category;
+      drawerTitle.textContent = topic.title;
+      drawerSummary.textContent = topic.summary;
+      drawerWhy.textContent = topic.why;
+
+      drawerMustKnow.innerHTML = '';
+      topic.mustKnow.forEach((item) => {
+        const badge = document.createElement('span');
+        badge.className = 'badge';
+        badge.textContent = item;
+        drawerMustKnow.appendChild(badge);
+      });
+
+      drawerResources.innerHTML = '';
+      topic.resources.forEach((resource) => {
+        const item = document.createElement('div');
+        item.className = 'resource-item';
+        item.innerHTML = `
+          <div class="resource-type">${resource.type}</div>
+          <div><a href="${resource.url}" target="_blank" rel="noreferrer">${resource.label}</a></div>
+        `;
+        drawerResources.appendChild(item);
+      });
+    }
+
+    nodes.forEach((node) => {
+      node.addEventListener('click', () => {
+        nodes.forEach((n) => n.classList.remove('active'));
+        node.classList.add('active');
+        renderTopic(node.dataset.topic);
+      });
+    });
+
+    renderTopic('devops-core');
+  </script>
+</body>
+</html>
