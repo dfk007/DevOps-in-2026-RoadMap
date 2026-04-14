@@ -3,830 +3,1201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevOps in 2026 Roadmap</title>
+  <title>DevOps 2026 Roadmap | Foundations, Cloud, Platform Engineering, and AI Ops</title>
+  <meta name="description" content="A research-aligned DevOps in 2026 roadmap covering real-world hiring foundations, cloud skills, platform engineering, and AI-enabled operations in a single interactive HTML page.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #08111f;
-      --panel: rgba(9, 18, 34, 0.82);
-      --panel-2: rgba(13, 26, 48, 0.92);
-      --panel-3: #0f1d34;
-      --line: rgba(147, 197, 253, 0.18);
-      --text: #e5eefc;
-      --muted: #94a3b8;
-      --accent: #5eead4;
-      --accent-2: #60a5fa;
-      --accent-3: #f8e16c;
-      --danger: #fb7185;
-      --shadow: 0 20px 60px rgba(2, 6, 23, 0.55);
-      --radius: 22px;
+      --bg: #05070d;
+      --panel: rgba(9, 14, 28, 0.9);
+      --panel-2: rgba(10, 18, 34, 0.95);
+      --line: rgba(111, 128, 167, 0.22);
+      --line-strong: rgba(111, 128, 167, 0.38);
+      --text: #edf4ff;
+      --muted: #97a6c3;
+      --muted-2: #6f7d97;
+      --amber: #f5c542;
+      --amber-soft: rgba(245, 197, 66, 0.14);
+      --cyan: #00d4ff;
+      --cyan-soft: rgba(0, 212, 255, 0.16);
+      --green: #7bffb3;
+      --green-soft: rgba(123, 255, 179, 0.16);
+      --pink: #ff5bd2;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+      --glow-cyan: 0 0 0 1px rgba(0, 212, 255, 0.28), 0 0 26px rgba(0, 212, 255, 0.15);
+      --glow-amber: 0 0 0 1px rgba(245, 197, 66, 0.26), 0 0 24px rgba(245, 197, 66, 0.12);
+      --glow-green: 0 0 0 1px rgba(123, 255, 179, 0.28), 0 0 28px rgba(123, 255, 179, 0.15);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
+    html, body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
+      min-height: 100%;
       background:
-        radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 24%),
-        radial-gradient(circle at top right, rgba(96, 165, 250, 0.2), transparent 30%),
-        linear-gradient(180deg, #030712 0%, #08111f 38%, #07101d 100%);
-      min-height: 100vh;
+        radial-gradient(circle at 15% 10%, rgba(0, 212, 255, 0.12), transparent 22%),
+        radial-gradient(circle at 85% 0%, rgba(255, 91, 210, 0.08), transparent 18%),
+        radial-gradient(circle at 50% 100%, rgba(123, 255, 179, 0.08), transparent 22%),
+        linear-gradient(180deg, #02040a 0%, #05070d 34%, #05070d 100%);
+      color: var(--text);
+      font-family: "IBM Plex Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), transparent 85%);
     }
 
     .shell {
-      width: min(1500px, calc(100vw - 32px));
-      margin: 20px auto;
+      width: min(1600px, calc(100vw - 20px));
+      margin: 10px auto;
       border: 1px solid var(--line);
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(8, 17, 31, 0.92), rgba(8, 17, 31, 0.74));
+      background: linear-gradient(180deg, rgba(5, 7, 13, 0.92), rgba(6, 10, 18, 0.95));
       box-shadow: var(--shadow);
+      border-radius: 28px;
       overflow: hidden;
-      backdrop-filter: blur(18px);
+      position: relative;
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--green), var(--amber), transparent);
+      opacity: 0.9;
     }
 
     .hero {
-      position: relative;
-      padding: 40px 40px 22px;
+      padding: 34px 36px 24px;
       border-bottom: 1px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(94, 234, 212, 0.09), transparent 32%),
-        linear-gradient(180deg, rgba(96, 165, 250, 0.1), transparent 45%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "OPS / PLATFORM / CLOUD / AI";
+      position: absolute;
+      top: 18px;
+      right: 28px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: rgba(151, 166, 195, 0.28);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.4fr 0.9fr;
+      grid-template-columns: 1.25fr 0.95fr;
       gap: 28px;
       align-items: end;
     }
 
     .eyebrow {
       display: inline-flex;
-      gap: 8px;
       align-items: center;
+      gap: 8px;
       padding: 8px 12px;
-      background: rgba(15, 23, 42, 0.66);
-      border: 1px solid rgba(94, 234, 212, 0.22);
       border-radius: 999px;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      border: 1px solid rgba(0, 212, 255, 0.28);
+      background: rgba(0, 212, 255, 0.08);
+      color: var(--cyan);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
     h1 {
-      margin: 16px 0 12px;
-      font-size: clamp(36px, 4vw, 64px);
-      line-height: 0.95;
+      margin: 18px 0 10px;
+      font-family: Orbitron, sans-serif;
+      font-size: clamp(38px, 5vw, 78px);
+      line-height: 0.93;
       letter-spacing: -0.04em;
       max-width: 10ch;
+      text-shadow: 0 0 24px rgba(0, 212, 255, 0.12);
     }
 
-    .hero p {
+    .hero-copy {
       margin: 0;
       color: var(--muted);
-      max-width: 72ch;
-      line-height: 1.65;
-      font-size: 16px;
+      line-height: 1.75;
+      max-width: 80ch;
+      font-size: 15.5px;
     }
 
-    .hero-card {
-      border: 1px solid rgba(248, 225, 108, 0.24);
-      background: linear-gradient(180deg, rgba(15, 29, 52, 0.95), rgba(7, 16, 29, 0.95));
+    .hero-copy strong { color: var(--text); }
+
+    .source-strip {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .source-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(12, 18, 35, 0.72);
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-panel {
+      border: 1px solid rgba(123, 255, 179, 0.22);
       border-radius: 24px;
-      padding: 20px;
+      background: linear-gradient(180deg, rgba(7, 18, 20, 0.96), rgba(8, 14, 28, 0.96));
+      padding: 20px 22px;
+      box-shadow: var(--glow-green);
     }
 
-    .hero-card h2 {
+    .hero-panel h2 {
       margin: 0 0 10px;
-      font-size: 17px;
+      font-family: Orbitron, sans-serif;
+      font-size: 16px;
+      color: var(--green);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
-    .hero-card ul {
+    .hero-panel ul {
       margin: 0;
       padding-left: 18px;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.75;
+      font-size: 14px;
     }
 
     .tabs {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
-      padding: 20px 40px 0;
+      padding: 16px 36px 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(5, 8, 16, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
     }
 
     .tab {
+      appearance: none;
       border: 1px solid var(--line);
-      background: rgba(15, 23, 42, 0.58);
+      background: rgba(15, 24, 48, 0.58);
       color: var(--muted);
-      padding: 12px 16px;
-      border-radius: 999px;
+      border-radius: 18px 18px 0 0;
+      padding: 14px 18px 13px;
       cursor: pointer;
-      font-weight: 700;
-      transition: 160ms ease;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: 180ms ease;
     }
 
-    .tab.active,
-    .tab:hover {
-      color: #07111f;
-      background: linear-gradient(135deg, var(--accent), #b6f7ee);
-      border-color: transparent;
-      transform: translateY(-1px);
-    }
-
-    .tab-panels {
-      padding: 24px 40px 40px;
+    .tab:hover,
+    .tab.active {
+      color: var(--text);
+      border-color: rgba(0, 212, 255, 0.34);
+      background: linear-gradient(180deg, rgba(0, 212, 255, 0.12), rgba(15, 24, 48, 0.9));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 -1px 0 rgba(0, 212, 255, 0.35);
     }
 
     .panel {
       display: none;
-      animation: fade 220ms ease;
+      padding: 28px 36px 38px;
+      animation: fade 180ms ease;
     }
 
-    .panel.active {
-      display: block;
-    }
+    .panel.active { display: block; }
 
     @keyframes fade {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .metrics {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 14px;
+      margin-bottom: 22px;
     }
 
     .metric {
-      background: var(--panel);
-      border: 1px solid var(--line);
+      padding: 18px;
       border-radius: 20px;
-      padding: 20px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(9, 14, 28, 0.92), rgba(11, 18, 35, 0.88));
     }
 
     .metric strong {
       display: block;
-      font-size: 30px;
-      margin-bottom: 6px;
-      color: #ffffff;
+      font-family: Orbitron, sans-serif;
+      font-size: 28px;
+      margin-bottom: 8px;
     }
 
     .metric span {
       color: var(--muted);
-      line-height: 1.5;
-      font-size: 14px;
+      line-height: 1.6;
+      font-size: 13.5px;
     }
 
-    .content-grid {
+    .skills-layout {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 20px;
+      align-items: start;
     }
 
     .card {
-      background: var(--panel);
+      background: linear-gradient(180deg, rgba(9, 14, 28, 0.92), rgba(11, 18, 35, 0.88));
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
+      border-radius: 24px;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+      opacity: 0.8;
     }
 
     .card h3 {
-      margin: 0 0 12px;
+      margin: 0 0 14px;
+      font-family: Orbitron, sans-serif;
       font-size: 22px;
     }
 
     .card p,
     .card li {
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
-    .priority-list,
-    .stack-list,
-    .resource-list,
-    .signal-list,
-    .mini-list {
+    .headline-card {
+      margin-bottom: 18px;
+      border: 1px solid rgba(123, 255, 179, 0.2);
+      background: linear-gradient(180deg, rgba(8, 16, 20, 0.96), rgba(9, 14, 28, 0.92));
+    }
+
+    .headline-card h3 { color: var(--green); }
+
+    .skills-grid {
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .priority-item,
-    .stack-item,
-    .resource-item,
-    .signal-item {
+    .skill-group {
+      border-radius: 20px;
       border: 1px solid var(--line);
-      background: rgba(15, 23, 42, 0.58);
-      border-radius: 18px;
+      background: rgba(12, 18, 35, 0.68);
       padding: 16px;
+      min-height: 100%;
     }
 
-    .priority-item h4,
-    .stack-item h4,
-    .signal-item h4 {
+    .skill-group.ai {
+      border-color: rgba(0, 212, 255, 0.28);
+      background: linear-gradient(180deg, rgba(5, 19, 24, 0.92), rgba(11, 18, 35, 0.82));
+    }
+
+    .skill-group h4 {
       margin: 0 0 8px;
-      font-size: 17px;
+      font-size: 16px;
     }
 
-    .badge-row {
+    .skill-group p {
+      margin: 0 0 12px;
+      font-size: 13.5px;
+    }
+
+    .tag-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
+      gap: 7px;
     }
 
-    .badge {
+    .tag {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(96, 165, 250, 0.1);
-      border: 1px solid rgba(96, 165, 250, 0.18);
-      color: #dbeafe;
-      font-size: 12px;
-      font-weight: 700;
+      padding: 6px 10px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      border: 1px solid var(--line);
+      background: rgba(20, 28, 48, 0.7);
+      color: var(--text);
     }
 
-    .badge.hot {
-      color: #fff8c5;
-      background: rgba(248, 225, 108, 0.1);
-      border-color: rgba(248, 225, 108, 0.22);
+    .tag.must {
+      color: var(--amber);
+      border-color: rgba(245, 197, 66, 0.28);
+      background: var(--amber-soft);
     }
 
-    .timeline {
+    .tag.ai {
+      color: var(--cyan);
+      border-color: rgba(0, 212, 255, 0.28);
+      background: var(--cyan-soft);
+    }
+
+    .tag.new {
+      color: var(--green);
+      border-color: rgba(123, 255, 179, 0.24);
+      background: var(--green-soft);
+    }
+
+    .sequence,
+    .hire-grid,
+    .guide-list,
+    .resource-list,
+    .insight-list {
       display: grid;
-      gap: 14px;
+      gap: 12px;
     }
 
-    .timeline-step {
-      display: grid;
-      grid-template-columns: 76px 1fr;
-      gap: 16px;
-      align-items: start;
-      padding: 16px;
+    .step,
+    .hire-item,
+    .guide-block,
+    .resource,
+    .insight {
       border-radius: 18px;
       border: 1px solid var(--line);
-      background: rgba(15, 23, 42, 0.5);
+      background: rgba(12, 18, 35, 0.66);
+      padding: 15px 16px;
     }
 
-    .phase {
-      font-weight: 800;
-      color: var(--accent);
+    .step {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .step-code {
+      font-family: "IBM Plex Mono", monospace;
+      color: var(--cyan);
       font-size: 12px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       padding-top: 2px;
     }
 
-    .roadmap-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.45fr) 360px;
-      gap: 18px;
-      min-height: 840px;
+    .hire-item h4 {
+      margin: 0 0 8px;
+      color: var(--amber);
+      font-size: 16px;
     }
 
-    .roadmap-board {
-      position: relative;
-      overflow: auto;
-      padding: 24px;
-      border-radius: 26px;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(7, 16, 29, 0.98), rgba(9, 18, 34, 0.98)),
-        radial-gradient(circle at top, rgba(96, 165, 250, 0.06), transparent 34%);
+    .guide-block h4 {
+      margin: 0 0 10px;
+      color: var(--cyan);
+      font-size: 16px;
     }
 
-    .roadmap {
-      position: relative;
-      min-width: 1180px;
-      min-height: 1320px;
-      padding: 30px;
-      border-radius: 24px;
-      background-image:
-        linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
-      background-size: 24px 24px;
+    .guide-block ul {
+      margin: 0;
+      padding-left: 18px;
     }
 
-    .roadmap-title {
-      position: absolute;
-      left: 435px;
-      top: 12px;
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
+    .guide-block li + li { margin-top: 8px; }
 
-    .node {
-      position: absolute;
-      width: 168px;
-      min-height: 58px;
-      border-radius: 16px;
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(19, 31, 54, 0.96));
+    .guide-block a,
+    .resource a {
       color: var(--text);
-      padding: 12px 14px;
-      box-shadow: 0 12px 30px rgba(2, 6, 23, 0.3);
-      cursor: pointer;
-      text-align: left;
-      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
-    }
-
-    .node:hover,
-    .node.active {
-      transform: translateY(-2px) scale(1.01);
-      border-color: rgba(94, 234, 212, 0.5);
-      box-shadow: 0 16px 40px rgba(20, 184, 166, 0.15);
-    }
-
-    .node small {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 6px;
-      line-height: 1.4;
-    }
-
-    .node.core {
-      background: linear-gradient(180deg, rgba(32, 58, 104, 0.95), rgba(23, 43, 79, 0.95));
-      border-color: rgba(96, 165, 250, 0.36);
-    }
-
-    .node.ai {
-      background: linear-gradient(180deg, rgba(18, 61, 60, 0.96), rgba(13, 43, 43, 0.96));
-      border-color: rgba(94, 234, 212, 0.34);
-    }
-
-    .node.highlight {
-      background: linear-gradient(180deg, rgba(77, 71, 23, 0.96), rgba(48, 43, 16, 0.96));
-      border-color: rgba(248, 225, 108, 0.34);
-    }
-
-    .connector {
-      position: absolute;
-      background: linear-gradient(180deg, rgba(96, 165, 250, 0.55), rgba(94, 234, 212, 0.55));
-      opacity: 0.9;
-      border-radius: 999px;
-      pointer-events: none;
-    }
-
-    .connector.h {
-      height: 2px;
-    }
-
-    .connector.v {
-      width: 2px;
-    }
-
-    .drawer {
-      position: sticky;
-      top: 18px;
-      align-self: start;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(9, 18, 34, 0.96));
-      min-height: 760px;
-      overflow: hidden;
-    }
-
-    .drawer-header {
-      padding: 24px 24px 18px;
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(96, 165, 250, 0.1), transparent 100%);
-    }
-
-    .drawer-header p,
-    .drawer-body p,
-    .drawer-body li {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .drawer-body {
-      padding: 20px 24px 28px;
-      display: grid;
-      gap: 22px;
-    }
-
-    .resource-item {
-      padding: 14px 16px;
-    }
-
-    .resource-item a {
-      color: #dff8ff;
       text-decoration: none;
-      font-weight: 700;
     }
 
-    .resource-item a:hover {
-      text-decoration: underline;
-    }
+    .guide-block a:hover,
+    .resource a:hover { text-decoration: underline; }
 
-    .resource-type {
-      display: inline-flex;
-      margin-bottom: 8px;
-      padding: 5px 8px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 800;
-      color: #07111f;
-      background: linear-gradient(135deg, var(--accent), #ccfbf1);
+    .roadmap-topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
     }
 
     .legend {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 18px;
     }
 
-    .legend span {
+    .legend-item {
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(12, 18, 35, 0.72);
       color: var(--muted);
-      font-size: 13px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
     }
 
-    .legend i {
-      width: 12px;
-      height: 12px;
+    .legend-dot {
+      width: 10px;
+      height: 10px;
       border-radius: 999px;
       display: inline-block;
     }
 
-    .i-core { background: var(--accent-2); }
-    .i-highlight { background: var(--accent-3); }
-    .i-ai { background: var(--accent); }
-
-    .footer-note {
-      padding: 0 40px 34px;
-      color: #7f8ea5;
+    .legend-note {
+      color: var(--muted);
       font-size: 13px;
     }
 
-    @media (max-width: 1100px) {
+    .roadmap-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) 390px;
+      gap: 18px;
+      min-height: 940px;
+    }
+
+    .roadmap-board {
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(7, 11, 20, 0.97), rgba(10, 15, 28, 0.97));
+      overflow: auto;
+      padding: 18px;
+      position: relative;
+    }
+
+    .roadmap-inner {
+      position: relative;
+      width: 1460px;
+      height: 1540px;
+      border-radius: 22px;
+      background:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+        radial-gradient(circle at top, rgba(0, 212, 255, 0.05), transparent 36%),
+        linear-gradient(180deg, rgba(6, 10, 18, 0.96), rgba(7, 11, 20, 0.96));
+      background-size: 28px 28px, 28px 28px, auto, auto;
+      overflow: hidden;
+    }
+
+    .roadmap-title {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: Orbitron, sans-serif;
+      font-size: 30px;
+      text-transform: uppercase;
+    }
+
+    .section-badge {
+      position: absolute;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--muted-2);
+      background: rgba(5, 8, 16, 0.88);
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      z-index: 3;
+    }
+
+    .node {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px 10px;
+      border-radius: 16px;
+      border: 1px solid var(--line-strong);
+      background: linear-gradient(180deg, rgba(15, 22, 42, 0.94), rgba(12, 18, 35, 0.94));
+      color: var(--text);
+      cursor: pointer;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      line-height: 1.35;
+      z-index: 5;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .node:hover,
+    .node.active {
+      transform: translateY(-2px) scale(1.02);
+      z-index: 8;
+    }
+
+    .node.core {
+      border-color: rgba(245, 197, 66, 0.35);
+      background: linear-gradient(180deg, rgba(38, 32, 14, 0.96), rgba(27, 24, 13, 0.96));
+      box-shadow: var(--glow-amber);
+    }
+
+    .node.ai {
+      border-color: rgba(0, 212, 255, 0.34);
+      background: linear-gradient(180deg, rgba(7, 31, 39, 0.96), rgba(10, 18, 35, 0.96));
+      box-shadow: var(--glow-cyan);
+    }
+
+    .node.newera {
+      border-color: rgba(123, 255, 179, 0.32);
+      background: linear-gradient(180deg, rgba(10, 29, 22, 0.96), rgba(11, 18, 35, 0.96));
+      box-shadow: var(--glow-green);
+    }
+
+    .node.root {
+      width: 220px !important;
+      height: 68px !important;
+      font-family: Orbitron, sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.06em;
+    }
+
+    .connector {
+      position: absolute;
+      background: linear-gradient(90deg, rgba(245, 197, 66, 0.55), rgba(0, 212, 255, 0.55));
+      border-radius: 999px;
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .connector.h { height: 2px; }
+    .connector.v { width: 2px; }
+
+    .sidebar {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+      min-height: 780px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(7, 11, 20, 0.98), rgba(11, 18, 35, 0.98));
+      overflow: hidden;
+    }
+
+    .sidebar-head {
+      padding: 22px 22px 18px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(0, 212, 255, 0.08), transparent 100%);
+    }
+
+    .sidebar-head h3 {
+      margin: 12px 0 8px;
+      font-family: Orbitron, sans-serif;
+      font-size: 28px;
+      line-height: 1.08;
+    }
+
+    .sidebar-head p,
+    .sidebar-body p,
+    .sidebar-body li {
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .sidebar-body {
+      padding: 20px 22px 24px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .resource-type {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--cyan), var(--green));
+      margin-bottom: 8px;
+    }
+
+    .footer-note {
+      padding: 0 36px 28px;
+      color: var(--muted-2);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1150px) {
       .hero-grid,
-      .content-grid,
+      .skills-layout,
       .roadmap-layout,
       .metrics {
         grid-template-columns: 1fr;
       }
 
-      .drawer {
+      .sidebar {
         position: relative;
         top: 0;
         min-height: auto;
       }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 760px) {
       .shell {
-        width: calc(100vw - 14px);
-        margin: 7px auto;
+        width: calc(100vw - 10px);
+        margin: 5px auto;
         border-radius: 18px;
       }
 
       .hero,
       .tabs,
-      .tab-panels,
+      .panel,
       .footer-note {
         padding-left: 16px;
         padding-right: 16px;
       }
 
-      .hero {
-        padding-top: 26px;
-      }
+      .hero::after { display: none; }
 
-      h1 {
-        max-width: none;
+      .skills-grid {
+        grid-template-columns: 1fr;
       }
 
       .roadmap-board {
-        padding: 12px;
-      }
-
-      .roadmap {
-        min-width: 1120px;
+        padding: 10px;
       }
     }
   </style>
 </head>
 <body>
   <div class="shell">
-    <section class="hero">
+    <header class="hero">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">DevOps 2026 • Hireable Skills Roadmap</div>
-          <h1>Master the foundations. Layer AI on top.</h1>
-          <p>
-            The DevOps market in 2026 rewards engineers who can operate reliable delivery systems,
-            automate infrastructure, and use AI to accelerate incident response, deployment safety,
-            and platform productivity. This page organizes the essential concepts into a practical,
-            modern learning path.
+          <div class="eyebrow">DevOps 2026 / Research-Aligned / GitHub Pages Ready</div>
+          <h1>Future Ops, Built on Real Foundations</h1>
+          <p class="hero-copy">
+            The 2026 DevOps landscape is still anchored in <strong>Linux, networking, cloud, Kubernetes, CI/CD, security, observability, and infrastructure automation</strong>.
+            Platform engineering is becoming a major scaling model, and AI is increasingly a differentiator through <strong>faster debugging, better delivery analysis, safer automation, and AI-platform operations</strong>.
+            To be hireable, you must first be trusted with production systems. Then you become exceptional by using AI to make those systems safer, faster, and more autonomous.
           </p>
+          <div class="source-strip" aria-label="Research sources">
+            <span class="source-pill">roadmap.sh 2026</span>
+            <span class="source-pill">DORA AI capabilities</span>
+            <span class="source-pill">CNCF annual survey</span>
+            <span class="source-pill">Gartner platform engineering</span>
+            <span class="source-pill">Puppet / Perforce report</span>
+          </div>
         </div>
-        <aside class="hero-card">
-          <h2>Primary hiring signal</h2>
+        <aside class="hero-panel">
+          <h2>2026 Hiring Signals</h2>
           <ul>
-            <li>Strong Linux, networking, scripting, and cloud fundamentals.</li>
-            <li>Real CI/CD, Kubernetes, IaC, observability, and security experience.</li>
-            <li>Clear use of AI for debugging, automation, remediation, and delivery quality.</li>
+            <li>Can you run production infrastructure with low drama and high clarity?</li>
+            <li>Can you design delivery systems with rollback, verification, and auditability?</li>
+            <li>Can you operate Kubernetes, Terraform, cloud IAM, and observability without guessing?</li>
+            <li>Can you use AI responsibly as leverage, not as a substitute for fundamentals?</li>
           </ul>
+        </aside>
+      </div>
+    </header>
+
+    <nav class="tabs" aria-label="Page tabs">
+      <button class="tab active" data-tab="skills">Tab 1 / Skills & Concepts</button>
+      <button class="tab" data-tab="roadmap">Tab 2 / Interactive Roadmap</button>
+    </nav>
+
+    <section class="panel active" id="skills">
+      <div class="metrics">
+        <article class="metric">
+          <strong style="color: var(--amber);">10+</strong>
+          <span>Core foundations first: Linux, networking, Git, cloud, containers, Kubernetes, IaC, CI/CD, security, and observability.</span>
+        </article>
+        <article class="metric">
+          <strong style="color: var(--cyan);">AI+</strong>
+          <span>AI-native platform skills matter, but mostly as advanced differentiators rather than universal requirements for all DevOps roles.</span>
+        </article>
+        <article class="metric">
+          <strong style="color: var(--green);">Platform</strong>
+          <span>Platform engineering is increasingly how larger teams scale DevOps, cloud-native delivery, and paved-road self-service.</span>
+        </article>
+        <article class="metric">
+          <strong style="color: var(--pink);">Proof</strong>
+          <span>Employers want evidence: delivery quality, operational judgment, automation depth, and the ability to reduce risk in production.</span>
+        </article>
+      </div>
+
+      <div class="skills-layout">
+        <div>
+          <article class="card headline-card">
+            <h3>Essential Skills & Concepts for DevOps in 2026</h3>
+            <p>
+              Employers still want engineers who can own systems end-to-end: operating systems, cloud platforms, infrastructure as code, software delivery, observability, and security. AI expands the role for some teams, especially around AIOps, AI platform work, and internal tooling, but the broad market still rewards strong classical DevOps foundations first.
+            </p>
+          </article>
+
+          <div class="skills-grid">
+            <article class="skill-group">
+              <h4>Programming & Scripting</h4>
+              <p>Python for automation and AI tooling, Go for cloud-native depth, Node.js/TypeScript for tooling and protocol integrations, and Bash for practical ops work.</p>
+              <div class="tag-row">
+                <span class="tag must">Python</span>
+                <span class="tag must">Go</span>
+                <span class="tag must">TypeScript / Node.js</span>
+                <span class="tag new">Rust</span>
+                <span class="tag must">Bash</span>
+              </div>
+            </article>
+
+            <article class="skill-group">
+              <h4>OS & Terminal Mastery</h4>
+              <p>Linux remains the operating truth. Understand processes, systemd, logs, permissions, package management, shells, and low-level debugging.</p>
+              <div class="tag-row">
+                <span class="tag must">Linux</span>
+                <span class="tag must">Bash</span>
+                <span class="tag">Fish / zsh</span>
+                <span class="tag">tmux</span>
+                <span class="tag new">eBPF</span>
+              </div>
+            </article>
+
+            <article class="skill-group">
+              <h4>Version Control & Collaboration</h4>
+              <p>Git remains central to infrastructure code, GitOps, CI/CD workflows, release tagging, review quality, and operational auditability.</p>
+              <div class="tag-row">
+                <span class="tag must">Git</span>
+                <span class="tag must">GitHub</span>
+                <span class="tag must">GitLab</span>
+                <span class="tag">Release Flows</span>
+                <span class="tag">PR Discipline</span>
+              </div>
+            </article>
+
+            <article class="skill-group">
+              <h4>Containers & Orchestration</h4>
+              <p>Container literacy is baseline. Production Kubernetes fluency means Helm, k3s, cluster debugging, networking, ingress, and day-two operations.</p>
+              <div class="tag-row">
+                <span class="tag must">Docker</span>
+                <span class="tag">LXC</span>
+                <span class="tag must">Podman</span>
+                <span class="tag must">Kubernetes</span>
+                <span class="tag must">Helm</span>
+                <span class="tag">k3s</span>
+              </div>
+            </article>
+
+            <article class="skill-group">
+              <h4>CI/CD, GitOps & Delivery Safety</h4>
+              <p>The core hiring test is still whether you can ship safely with validation, rollback, progressive delivery, policy gates, and repeatability.</p>
+              <div class="tag-row">
+                <span class="tag must">GitHub Actions</span>
+                <span class="tag must">GitLab CI</span>
+                <span class="tag must">ArgoCD</span>
+                <span class="tag">Tekton</span>
+                <span class="tag">Progressive Delivery</span>
+              </div>
+            </article>
+
+            <article class="skill-group">
+              <h4>Infrastructure as Code & Automation</h4>
+              <p>Terraform is still the default signal. Ansible remains practical, Pulumi is valuable in typed-code ecosystems, and Crossplane is increasingly relevant for platform teams.</p>
+              <div class="tag-row">
+                <span class="tag must">Terraform</span>
+                <span class="tag must">Ansible</span>
+                <span class="tag">Pulumi</span>
+                <span class="tag">Crossplane</span>
+                <span class="tag">OpenTofu</span>
+              </div>
+            </article>
+
+            <article class="skill-group">
+              <h4>Cloud, Networking & Security</h4>
+              <p>Go deep on one cloud, but keep strong fundamentals across IAM, VPC design, TLS, WireGuard, RBAC, secrets, runtime security, and event-driven cloud services.</p>
+              <div class="tag-row">
+                <span class="tag must">AWS</span>
+                <span class="tag must">GCP</span>
+                <span class="tag must">Azure</span>
+                <span class="tag must">WireGuard</span>
+                <span class="tag must">SSL / TLS</span>
+                <span class="tag must">RBAC</span>
+              </div>
+            </article>
+
+            <article class="skill-group">
+              <h4>Monitoring, Reliability & Incident Response</h4>
+              <p>Production ownership shows up in dashboards, alerts, traces, logs, SLOs, and how quickly you can detect and recover from failures.</p>
+              <div class="tag-row">
+                <span class="tag must">Prometheus</span>
+                <span class="tag must">Grafana</span>
+                <span class="tag must">OpenTelemetry</span>
+                <span class="tag must">Loki</span>
+                <span class="tag">SLOs</span>
+              </div>
+            </article>
+
+            <article class="skill-group ai">
+              <h4>LLMOps & AI Platform Operations</h4>
+              <p>For AI-heavy organizations, this is a real differentiator: prompt workflows, model lifecycle, AI traces, evaluations, and operational safety.</p>
+              <div class="tag-row">
+                <span class="tag ai">LangGraph</span>
+                <span class="tag ai">LangSmith</span>
+                <span class="tag ai">MLflow</span>
+                <span class="tag ai">Prompt Engineering</span>
+                <span class="tag ai">Evaluation</span>
+              </div>
+            </article>
+
+            <article class="skill-group ai">
+              <h4>Model Serving & Inference Infrastructure</h4>
+              <p>Relevant for AI platform teams: serving performance, GPU scheduling, autoscaling, inference metrics, and API-oriented deployment patterns.</p>
+              <div class="tag-row">
+                <span class="tag ai">vLLM</span>
+                <span class="tag ai">Ollama</span>
+                <span class="tag ai">TGI</span>
+                <span class="tag ai">KServe</span>
+                <span class="tag ai">Ray Serve</span>
+              </div>
+            </article>
+
+            <article class="skill-group ai">
+              <h4>RAG, Vector Databases & Context Systems</h4>
+              <p>Advanced but useful: chunking, embeddings, vector stores, retrieval tuning, reranking, and evaluation.</p>
+              <div class="tag-row">
+                <span class="tag ai">RAG Pipelines</span>
+                <span class="tag ai">pgvector</span>
+                <span class="tag ai">Qdrant</span>
+                <span class="tag ai">Embeddings</span>
+                <span class="tag ai">Retrieval Evaluation</span>
+              </div>
+            </article>
+
+            <article class="skill-group ai">
+              <h4>MCP, AI Agents & AI Observability</h4>
+              <p>These are emerging differentiators. Valuable for advanced teams, but not universal baseline requirements for all DevOps roles.</p>
+              <div class="tag-row">
+                <span class="tag ai">MCP</span>
+                <span class="tag ai">AI Agents</span>
+                <span class="tag ai">LangFuse</span>
+                <span class="tag ai">Prompt Tracing</span>
+                <span class="tag ai">Token Metering</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div>
+          <article class="card" style="margin-bottom: 18px;">
+            <h3>Recommended Learning Sequence</h3>
+            <div class="sequence">
+              <div class="step">
+                <div class="step-code">Phase 01</div>
+                <div>
+                  <strong>Foundations</strong>
+                  <p>Linux, shell, Python, Git, networking, cloud basics, Docker. This is the baseline before platform work becomes meaningful.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-code">Phase 02</div>
+                <div>
+                  <strong>Delivery Systems</strong>
+                  <p>CI/CD, GitOps, deployment strategies, rollback safety, secrets, and environment promotion.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-code">Phase 03</div>
+                <div>
+                  <strong>Platform Depth</strong>
+                  <p>Kubernetes, Helm, Terraform, cloud IAM, observability, cost awareness, and incident response.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-code">Phase 04</div>
+                <div>
+                  <strong>Advanced Layer</strong>
+                  <p>Platform engineering, AIOps, event-driven systems, model serving, RAG, MCP, and AI observability where the role or company requires it.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" style="margin-bottom: 18px;">
+            <h3>What Makes You Hireable</h3>
+            <div class="hire-grid">
+              <div class="hire-item">
+                <h4>Show real systems</h4>
+                <p>Portfolio projects should include Terraform, Kubernetes, CI/CD, monitoring, secrets, and at least one automation-heavy operational workflow.</p>
+              </div>
+              <div class="hire-item">
+                <h4>Be production-minded</h4>
+                <p>Know how to roll back, monitor blast radius, reduce toil, document runbooks, and reason about failure under pressure.</p>
+              </div>
+              <div class="hire-item">
+                <h4>Use AI as leverage</h4>
+                <p>Hiring teams increasingly value engineers who can use AI for triage, drafting, review, telemetry analysis, and safer operational workflows.</p>
+              </div>
+              <div class="hire-item">
+                <h4>Go deep, then widen</h4>
+                <p>Pick a strong primary stack such as AWS + Terraform + Kubernetes + ArgoCD, then extend into platform engineering and AI ops from that base.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Cloud Skills 2026 Reference Pack</h3>
+            <p>
+              Integrated from <code>Cloud Skills 2026 _ Vishakha Sadhwani.md</code>. These are practical learning tracks to complement the roadmap with hands-on resources.
+            </p>
+            <div class="guide-list">
+              <div class="guide-block">
+                <h4>GitOps & Platform Engineering</h4>
+                <ul>
+                  <li><a href="https://learngitbranching.js.org" target="_blank" rel="noreferrer">Learn Git Branching</a></li>
+                  <li><a href="https://www.atlassian.com/git/tutorials" target="_blank" rel="noreferrer">Atlassian Git Tutorials</a></li>
+                  <li><a href="https://git-scm.com/book/en/v2" target="_blank" rel="noreferrer">Pro Git</a></li>
+                  <li><a href="https://training.linuxfoundation.org/training/introduction-to-kubernetes" target="_blank" rel="noreferrer">Linux Foundation Intro to Kubernetes</a></li>
+                  <li><a href="https://argo-cd.readthedocs.io/en/stable/getting_started" target="_blank" rel="noreferrer">ArgoCD Getting Started</a></li>
+                  <li><a href="https://fluxcd.io/flux/get-started" target="_blank" rel="noreferrer">FluxCD Guide</a></li>
+                </ul>
+              </div>
+              <div class="guide-block">
+                <h4>Infrastructure as APIs</h4>
+                <ul>
+                  <li><a href="https://kodekloud.com/courses/terraform-for-beginners" target="_blank" rel="noreferrer">Terraform for Beginners</a></li>
+                  <li><a href="https://academy.postman.com" target="_blank" rel="noreferrer">Postman API Fundamentals</a></li>
+                  <li><a href="https://docs.crossplane.io/latest/getting-started" target="_blank" rel="noreferrer">Crossplane Getting Started</a></li>
+                  <li><a href="https://www.pulumi.com/docs/get-started" target="_blank" rel="noreferrer">Pulumi Getting Started</a></li>
+                  <li><a href="https://github.com/pulumi/examples" target="_blank" rel="noreferrer">Pulumi Examples</a></li>
+                </ul>
+              </div>
+              <div class="guide-block">
+                <h4>Observability & AIOps</h4>
+                <ul>
+                  <li><a href="https://sre.google/sre-book" target="_blank" rel="noreferrer">Google SRE Book</a></li>
+                  <li><a href="https://prometheus.io/docs/introduction/overview" target="_blank" rel="noreferrer">Prometheus Fundamentals</a></li>
+                  <li><a href="https://grafana.com/tutorials" target="_blank" rel="noreferrer">Grafana Tutorials</a></li>
+                  <li><a href="https://opentelemetry.io/docs" target="_blank" rel="noreferrer">OpenTelemetry Docs</a></li>
+                  <li><a href="https://www.ibm.com/topics/aiops" target="_blank" rel="noreferrer">IBM AIOps Overview</a></li>
+                </ul>
+              </div>
+              <div class="guide-block">
+                <h4>AI Infrastructure & Model Deployment</h4>
+                <ul>
+                  <li><a href="https://fastapi.tiangolo.com/tutorial" target="_blank" rel="noreferrer">FastAPI Tutorial</a></li>
+                  <li><a href="https://developer.nvidia.com/triton-inference-server" target="_blank" rel="noreferrer">NVIDIA Triton Inference Server</a></li>
+                  <li><a href="https://docs.ray.io/en/latest/serve/index.html" target="_blank" rel="noreferrer">Ray Serve</a></li>
+                  <li><a href="https://kserve.github.io/website/get_started" target="_blank" rel="noreferrer">KServe Getting Started</a></li>
+                  <li><a href="https://developer.nvidia.com/cuda-zone" target="_blank" rel="noreferrer">CUDA Zone</a></li>
+                </ul>
+              </div>
+              <div class="guide-block">
+                <h4>Event-Driven Architecture & API Intelligence</h4>
+                <ul>
+                  <li><a href="https://developer.confluent.io/learn-kafka" target="_blank" rel="noreferrer">Kafka 101</a></li>
+                  <li><a href="https://www.rabbitmq.com/getstarted.html" target="_blank" rel="noreferrer">RabbitMQ Tutorials</a></li>
+                  <li><a href="https://martinfowler.com/articles/201701-event-driven.html" target="_blank" rel="noreferrer">Martin Fowler on Event-Driven Architecture</a></li>
+                  <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started" target="_blank" rel="noreferrer">AWS Lambda Getting Started</a></li>
+                  <li><a href="https://developers.cloudflare.com/ai" target="_blank" rel="noreferrer">Cloudflare AI</a></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="roadmap">
+      <div class="roadmap-topbar">
+        <div class="legend">
+          <div class="legend-item"><span class="legend-dot" style="background: var(--amber);"></span>Core DevOps Foundation</div>
+          <div class="legend-item"><span class="legend-dot" style="background: var(--cyan);"></span>Advanced AI / Platform Layer</div>
+          <div class="legend-item"><span class="legend-dot" style="background: var(--green);"></span>Emerging Platform Edge</div>
+        </div>
+        <div class="legend-note">Click any node to open the right-side resource drawer.</div>
+      </div>
+
+      <div class="roadmap-layout">
+        <div class="roadmap-board">
+          <div class="roadmap-inner">
+            <div class="roadmap-title">DevOps 2026 Interactive Roadmap</div>
+
+            <div class="section-badge" style="left: 90px; top: 110px;">Foundations</div>
+            <div class="section-badge" style="left: 570px; top: 110px;">Delivery & Platform</div>
+            <div class="section-badge" style="left: 1085px; top: 110px;">Advanced AI Layer</div>
+
+            <div class="connector v" style="left: 730px; top: 102px; height: 66px;"></div>
+            <div class="connector h" style="left: 240px; top: 168px; width: 490px;"></div>
+            <div class="connector h" style="left: 730px; top: 168px; width: 480px;"></div>
+            <div class="connector v" style="left: 240px; top: 168px; height: 150px;"></div>
+            <div class="connector v" style="left: 485px; top: 168px; height: 150px;"></div>
+            <div class="connector v" style="left: 730px; top: 168px; height: 150px;"></div>
+            <div class="connector v" style="left: 970px; top: 168px; height: 150px;"></div>
+            <div class="connector v" style="left: 1210px; top: 168px; height: 150px;"></div>
+            <div class="connector h" style="left: 240px; top: 318px; width: 970px;"></div>
+            <div class="connector v" style="left: 240px; top: 318px; height: 166px;"></div>
+            <div class="connector v" style="left: 485px; top: 318px; height: 166px;"></div>
+            <div class="connector v" style="left: 730px; top: 318px; height: 166px;"></div>
+            <div class="connector v" style="left: 970px; top: 318px; height: 166px;"></div>
+            <div class="connector v" style="left: 1210px; top: 318px; height: 166px;"></div>
+            <div class="connector h" style="left: 240px; top: 484px; width: 970px;"></div>
+            <div class="connector v" style="left: 240px; top: 484px; height: 170px;"></div>
+            <div class="connector v" style="left: 485px; top: 484px; height: 170px;"></div>
+            <div class="connector v" style="left: 730px; top: 484px; height: 170px;"></div>
+            <div class="connector v" style="left: 970px; top: 484px; height: 170px;"></div>
+            <div class="connector v" style="left: 1210px; top: 484px; height: 170px;"></div>
+            <div class="connector h" style="left: 240px; top: 654px; width: 970px;"></div>
+            <div class="connector v" style="left: 363px; top: 654px; height: 170px;"></div>
+            <div class="connector v" style="left: 608px; top: 654px; height: 170px;"></div>
+            <div class="connector v" style="left: 853px; top: 654px; height: 170px;"></div>
+            <div class="connector v" style="left: 1098px; top: 654px; height: 170px;"></div>
+            <div class="connector h" style="left: 363px; top: 824px; width: 735px;"></div>
+            <div class="connector v" style="left: 363px; top: 824px; height: 174px;"></div>
+            <div class="connector v" style="left: 608px; top: 824px; height: 174px;"></div>
+            <div class="connector v" style="left: 853px; top: 824px; height: 174px;"></div>
+            <div class="connector v" style="left: 1098px; top: 824px; height: 174px;"></div>
+            <div class="connector h" style="left: 363px; top: 998px; width: 735px;"></div>
+            <div class="connector v" style="left: 485px; top: 998px; height: 174px;"></div>
+            <div class="connector v" style="left: 730px; top: 998px; height: 174px;"></div>
+            <div class="connector v" style="left: 970px; top: 998px; height: 174px;"></div>
+            <div class="connector h" style="left: 485px; top: 1172px; width: 485px;"></div>
+
+            <button class="node core root active" style="left: 620px; top: 34px;" data-topic="devops-2026">DevOps 2026</button>
+
+            <button class="node core" style="left: 150px; top: 286px; width: 180px; height: 58px;" data-topic="programming">Programming Languages</button>
+            <button class="node core" style="left: 395px; top: 286px; width: 180px; height: 58px;" data-topic="os-terminal">OS & Terminal</button>
+            <button class="node core" style="left: 640px; top: 286px; width: 180px; height: 58px;" data-topic="vcs">VCS & Collaboration</button>
+            <button class="node core" style="left: 880px; top: 286px; width: 180px; height: 58px;" data-topic="containers">Containers</button>
+            <button class="node ai" style="left: 1120px; top: 286px; width: 180px; height: 58px;" data-topic="prompt-engineering">Prompt Engineering</button>
+
+            <button class="node core" style="left: 150px; top: 452px; width: 180px; height: 58px;" data-topic="orchestration">Container Orchestration</button>
+            <button class="node core" style="left: 395px; top: 452px; width: 180px; height: 58px;" data-topic="cicd">CI/CD & GitOps</button>
+            <button class="node core" style="left: 640px; top: 452px; width: 180px; height: 58px;" data-topic="iac">Infrastructure as Code</button>
+            <button class="node core" style="left: 880px; top: 452px; width: 180px; height: 58px;" data-topic="cloud">Cloud Providers</button>
+            <button class="node ai" style="left: 1120px; top: 452px; width: 180px; height: 58px;" data-topic="llmops">LLMOps</button>
+
+            <button class="node core" style="left: 150px; top: 622px; width: 180px; height: 58px;" data-topic="network-security">Networking & Security</button>
+            <button class="node core" style="left: 395px; top: 622px; width: 180px; height: 58px;" data-topic="monitoring">Monitoring & Observability</button>
+            <button class="node newera" style="left: 640px; top: 622px; width: 180px; height: 58px;" data-topic="platform-engineering">Platform Engineering</button>
+            <button class="node ai" style="left: 880px; top: 622px; width: 180px; height: 58px;" data-topic="model-serving">Model Serving</button>
+            <button class="node ai" style="left: 1120px; top: 622px; width: 180px; height: 58px;" data-topic="rag">RAG Pipelines</button>
+
+            <button class="node core" style="left: 272px; top: 792px; width: 180px; height: 58px;" data-topic="aws">AWS</button>
+            <button class="node core" style="left: 517px; top: 792px; width: 180px; height: 58px;" data-topic="gcp">GCP</button>
+            <button class="node core" style="left: 762px; top: 792px; width: 180px; height: 58px;" data-topic="azure">Azure</button>
+            <button class="node ai" style="left: 1007px; top: 792px; width: 180px; height: 58px;" data-topic="vector-db">Vector Databases</button>
+
+            <button class="node core" style="left: 272px; top: 966px; width: 180px; height: 58px;" data-topic="terraform">Terraform</button>
+            <button class="node core" style="left: 517px; top: 966px; width: 180px; height: 58px;" data-topic="ansible">Ansible</button>
+            <button class="node core" style="left: 762px; top: 966px; width: 180px; height: 58px;" data-topic="pulumi">Pulumi</button>
+            <button class="node ai" style="left: 1007px; top: 966px; width: 180px; height: 58px;" data-topic="mcp">Model Context Protocol</button>
+
+            <button class="node ai" style="left: 395px; top: 1140px; width: 180px; height: 58px;" data-topic="ai-agents">AI Agents</button>
+            <button class="node ai" style="left: 640px; top: 1140px; width: 180px; height: 58px;" data-topic="ai-observability">AI Observability</button>
+            <button class="node ai" style="left: 880px; top: 1140px; width: 180px; height: 58px;" data-topic="future-ops">Autonomous Ops</button>
+
+            <button class="node core" style="left: 86px; top: 372px; width: 116px; height: 44px;" data-topic="python">Python</button>
+            <button class="node core" style="left: 214px; top: 372px; width: 116px; height: 44px;" data-topic="go">Go</button>
+            <button class="node newera" style="left: 342px; top: 372px; width: 116px; height: 44px;" data-topic="rust">Rust</button>
+            <button class="node core" style="left: 470px; top: 372px; width: 116px; height: 44px;" data-topic="nodejs">JS / Node.js</button>
+
+            <button class="node core" style="left: 331px; top: 538px; width: 116px; height: 44px;" data-topic="linux">Linux</button>
+            <button class="node core" style="left: 459px; top: 538px; width: 116px; height: 44px;" data-topic="bash">Bash</button>
+            <button class="node core" style="left: 587px; top: 538px; width: 116px; height: 44px;" data-topic="fish">Fish</button>
+
+            <button class="node core" style="left: 576px; top: 372px; width: 116px; height: 44px;" data-topic="git">Git</button>
+            <button class="node core" style="left: 704px; top: 372px; width: 116px; height: 44px;" data-topic="github">GitHub</button>
+            <button class="node core" style="left: 832px; top: 372px; width: 116px; height: 44px;" data-topic="gitlab">GitLab</button>
+
+            <button class="node core" style="left: 820px; top: 538px; width: 116px; height: 44px;" data-topic="docker">Docker</button>
+            <button class="node core" style="left: 948px; top: 538px; width: 116px; height: 44px;" data-topic="lxc">LXC</button>
+            <button class="node core" style="left: 1076px; top: 538px; width: 116px; height: 44px;" data-topic="podman">Podman</button>
+
+            <button class="node ai" style="left: 1065px; top: 372px; width: 116px; height: 44px;" data-topic="prompt-design">Prompt Design</button>
+            <button class="node ai" style="left: 1193px; top: 372px; width: 116px; height: 44px;" data-topic="evals">AI Evals</button>
+
+            <button class="node core" style="left: 86px; top: 708px; width: 116px; height: 44px;" data-topic="kubernetes">Kubernetes</button>
+            <button class="node core" style="left: 214px; top: 708px; width: 116px; height: 44px;" data-topic="helm">Helm</button>
+            <button class="node core" style="left: 342px; top: 708px; width: 116px; height: 44px;" data-topic="k3s">k3s</button>
+
+            <button class="node core" style="left: 331px; top: 878px; width: 116px; height: 44px;" data-topic="github-actions">GitHub Actions</button>
+            <button class="node core" style="left: 459px; top: 878px; width: 116px; height: 44px;" data-topic="gitlab-ci">GitLab CI</button>
+            <button class="node core" style="left: 587px; top: 878px; width: 116px; height: 44px;" data-topic="argocd">ArgoCD</button>
+            <button class="node core" style="left: 715px; top: 878px; width: 116px; height: 44px;" data-topic="tekton">Tekton</button>
+
+            <button class="node core" style="left: 86px; top: 1048px; width: 116px; height: 44px;" data-topic="wireguard">WireGuard</button>
+            <button class="node core" style="left: 214px; top: 1048px; width: 116px; height: 44px;" data-topic="tls">SSL / TLS</button>
+            <button class="node core" style="left: 342px; top: 1048px; width: 116px; height: 44px;" data-topic="rbac">RBAC</button>
+
+            <button class="node core" style="left: 331px; top: 1218px; width: 116px; height: 44px;" data-topic="prometheus">Prometheus</button>
+            <button class="node core" style="left: 459px; top: 1218px; width: 116px; height: 44px;" data-topic="grafana">Grafana</button>
+            <button class="node core" style="left: 587px; top: 1218px; width: 116px; height: 44px;" data-topic="opentelemetry">OpenTelemetry</button>
+            <button class="node core" style="left: 715px; top: 1218px; width: 116px; height: 44px;" data-topic="loki">Loki</button>
+
+            <button class="node ai" style="left: 821px; top: 708px; width: 116px; height: 44px;" data-topic="vllm">vLLM</button>
+            <button class="node ai" style="left: 949px; top: 708px; width: 116px; height: 44px;" data-topic="ollama">Ollama</button>
+            <button class="node ai" style="left: 1077px; top: 708px; width: 116px; height: 44px;" data-topic="tgi">TGI</button>
+
+            <button class="node ai" style="left: 1065px; top: 538px; width: 116px; height: 44px;" data-topic="langgraph">LangGraph</button>
+            <button class="node ai" style="left: 1193px; top: 538px; width: 116px; height: 44px;" data-topic="langsmith">LangSmith</button>
+
+            <button class="node ai" style="left: 1065px; top: 878px; width: 116px; height: 44px;" data-topic="pgvector">pgvector</button>
+            <button class="node ai" style="left: 1193px; top: 878px; width: 116px; height: 44px;" data-topic="qdrant">Qdrant</button>
+
+            <button class="node ai" style="left: 1065px; top: 1048px; width: 116px; height: 44px;" data-topic="mcp-servers">MCP Servers</button>
+            <button class="node ai" style="left: 1193px; top: 1048px; width: 116px; height: 44px;" data-topic="tool-use">Tool Use</button>
+
+            <button class="node ai" style="left: 1065px; top: 1218px; width: 116px; height: 44px;" data-topic="langfuse">LangFuse</button>
+            <button class="node ai" style="left: 1193px; top: 1218px; width: 116px; height: 44px;" data-topic="token-metering">Token Metering</button>
+          </div>
+        </div>
+
+        <aside class="sidebar">
+          <div class="sidebar-head">
+            <div class="eyebrow" id="sidebarCategory">Roadmap Topic</div>
+            <h3 id="sidebarTitle">DevOps 2026</h3>
+            <p id="sidebarSummary">Select a roadmap node to explore why it matters, what to master, and where to learn it.</p>
+          </div>
+          <div class="sidebar-body">
+            <section>
+              <h4 style="margin: 0 0 10px; font-family: Orbitron, sans-serif; font-size: 16px;">Why It Matters</h4>
+              <p id="sidebarWhy"></p>
+            </section>
+            <section>
+              <h4 style="margin: 0 0 10px; font-family: Orbitron, sans-serif; font-size: 16px;">Must Know</h4>
+              <div class="insight-list" id="sidebarMustKnow"></div>
+            </section>
+            <section>
+              <h4 style="margin: 0 0 10px; font-family: Orbitron, sans-serif; font-size: 16px;">Resources</h4>
+              <div class="resource-list" id="sidebarResources"></div>
+            </section>
+          </div>
         </aside>
       </div>
     </section>
 
-    <nav class="tabs" aria-label="DevOps roadmap tabs">
-      <button class="tab active" data-tab="overview">Executive Overview</button>
-      <button class="tab" data-tab="skills">Must-Master Skills</button>
-      <button class="tab" data-tab="roadmap">Interactive Roadmap</button>
-    </nav>
-
-    <main class="tab-panels">
-      <section class="panel active" id="overview">
-        <div class="metrics">
-          <article class="metric">
-            <strong>1</strong>
-            <span>Start with operating system, networking, Git, containers, and cloud basics before touching advanced AI workflows.</span>
-          </article>
-          <article class="metric">
-            <strong>2</strong>
-            <span>Become excellent at CI/CD, Kubernetes, Terraform, monitoring, and release safety.</span>
-          </article>
-          <article class="metric">
-            <strong>3</strong>
-            <span>Then add AI-assisted operations: copilots, log summarization, incident triage, and remediation agents.</span>
-          </article>
-          <article class="metric">
-            <strong>4</strong>
-            <span>Hiring favors demonstrable systems thinking, production ownership, and automation depth over buzzwords.</span>
-          </article>
-        </div>
-
-        <div class="content-grid">
-          <article class="card">
-            <h3>What DevOps employers want in 2026</h3>
-            <div class="priority-list">
-              <div class="priority-item">
-                <h4>Foundations are assumed, not optional</h4>
-                <p>Linux administration, shell usage, TCP/IP basics, DNS, HTTP, TLS, Git, and cloud primitives are the baseline. If these are weak, advanced tooling will not save you.</p>
-                <div class="badge-row">
-                  <span class="badge">Linux</span>
-                  <span class="badge">Networking</span>
-                  <span class="badge">Git</span>
-                  <span class="badge">Cloud Basics</span>
-                </div>
-              </div>
-              <div class="priority-item">
-                <h4>Delivery engineering must be production-grade</h4>
-                <p>You need to design repeatable pipelines, artifact flows, environment promotion, rollback paths, canary releases, and policy gates that teams trust in production.</p>
-                <div class="badge-row">
-                  <span class="badge hot">CI/CD</span>
-                  <span class="badge hot">Blue-Green</span>
-                  <span class="badge hot">Canary</span>
-                  <span class="badge hot">Rollback</span>
-                </div>
-              </div>
-              <div class="priority-item">
-                <h4>AI is a force multiplier, not a replacement for fundamentals</h4>
-                <p>Use LLMs and agents to draft Terraform, explain alerts, summarize logs, suggest fixes, and reduce MTTR, but only after you can validate outputs safely.</p>
-                <div class="badge-row">
-                  <span class="badge">AIOps</span>
-                  <span class="badge">LLM Assistants</span>
-                  <span class="badge">AI Agents</span>
-                  <span class="badge">Guardrails</span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <aside class="card">
-            <h3>Recommended learning sequence</h3>
-            <div class="timeline">
-              <div class="timeline-step">
-                <div class="phase">Phase 1</div>
-                <div>
-                  <strong>Core systems</strong>
-                  <p>Linux, Bash, Python, Git, networking, containers, and one cloud platform.</p>
-                </div>
-              </div>
-              <div class="timeline-step">
-                <div class="phase">Phase 2</div>
-                <div>
-                  <strong>Delivery and infrastructure</strong>
-                  <p>CI/CD, Terraform, Kubernetes, Helm, secret management, and artifact registries.</p>
-                </div>
-              </div>
-              <div class="timeline-step">
-                <div class="phase">Phase 3</div>
-                <div>
-                  <strong>Reliability and security</strong>
-                  <p>Observability, SLOs, incident response, supply chain security, policy-as-code, and runtime hardening.</p>
-                </div>
-              </div>
-              <div class="timeline-step">
-                <div class="phase">Phase 4</div>
-                <div>
-                  <strong>AI-enabled operations</strong>
-                  <p>Copilots, LLM-assisted debugging, predictive deployments, auto-remediation, and evaluation loops.</p>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="panel" id="skills">
-        <div class="content-grid">
-          <article class="card">
-            <h3>Essential Skills & Concepts for DevOps in 2026</h3>
-            <div class="stack-list">
-              <div class="stack-item">
-                <h4>1. Linux, shell, and automation</h4>
-                <p>Master process management, systemd, permissions, package management, filesystems, logs, Bash, and Python scripting. This is the operating bedrock of DevOps.</p>
-              </div>
-              <div class="stack-item">
-                <h4>2. Networking and web fundamentals</h4>
-                <p>Know DNS, routing, subnets, reverse proxies, load balancers, HTTP, TLS, certificates, firewalls, VPNs, and service discovery.</p>
-              </div>
-              <div class="stack-item">
-                <h4>3. Git, repositories, and collaboration flows</h4>
-                <p>Understand branching models, pull requests, tagging, release versioning, trunk-based development, and repository hygiene.</p>
-              </div>
-              <div class="stack-item">
-                <h4>4. Containers and Kubernetes</h4>
-                <p>Build images, optimize Dockerfiles, manage registries, read cluster events, debug pods, work with services, ingress, Helm, and GitOps controllers.</p>
-              </div>
-              <div class="stack-item">
-                <h4>5. Infrastructure as Code</h4>
-                <p>Write reusable Terraform modules, understand state, drift, workspaces, remote backends, policy enforcement, and reviewable change plans.</p>
-              </div>
-              <div class="stack-item">
-                <h4>6. CI/CD and deployment strategies</h4>
-                <p>Build pipelines that test, scan, package, publish, deploy, verify, and rollback. Blue-green, canary, progressive delivery, and environment promotion are core hiring skills.</p>
-              </div>
-              <div class="stack-item">
-                <h4>7. Cloud platform depth</h4>
-                <p>Go deep on at least one of AWS, Azure, or GCP. You should be fluent in IAM, compute, networking, storage, managed databases, observability, and cost controls.</p>
-              </div>
-              <div class="stack-item">
-                <h4>8. Observability and reliability engineering</h4>
-                <p>Collect metrics, logs, traces, build dashboards, define SLOs, manage alerts, run incident response, and learn postmortem discipline.</p>
-              </div>
-              <div class="stack-item">
-                <h4>9. DevSecOps and supply chain security</h4>
-                <p>Integrate secret handling, image scanning, SBOMs, provenance, dependency policies, least privilege, admission controls, and runtime security.</p>
-              </div>
-              <div class="stack-item">
-                <h4>10. AIOps and LLM integration</h4>
-                <p>This is the strongest differentiator. Use AI to draft IaC, explain incidents, summarize logs, generate runbooks, predict risky changes, and power self-healing workflows.</p>
-              </div>
-            </div>
-          </article>
-
-          <aside class="card">
-            <h3>Modern AI-driven practices</h3>
-            <div class="signal-list">
-              <div class="signal-item">
-                <h4>AI-powered code and config review</h4>
-                <p>Use assistants to catch misconfigurations, insecure IAM, poor Docker layering, and risky pipeline steps before merge.</p>
-              </div>
-              <div class="signal-item">
-                <h4>Predictive deployment analysis</h4>
-                <p>Analyze commit history, test health, and change blast radius to identify risky releases before they hit production.</p>
-              </div>
-              <div class="signal-item">
-                <h4>Auto-remediation loops</h4>
-                <p>Trigger safe rollback, restart, scaling, failover, or ticket creation based on confidence thresholds and policy gates.</p>
-              </div>
-              <div class="signal-item">
-                <h4>AI agents with guardrails</h4>
-                <p>Let agents monitor infrastructure and resolve repetitive incidents, but keep approval boundaries, audit trails, and blast-radius limits.</p>
-              </div>
-            </div>
-
-            <h3 style="margin-top: 24px;">What makes you hireable</h3>
-            <div class="mini-list">
-              <div class="resource-item">
-                <span class="resource-type">Portfolio</span>
-                <p>Show one real platform project: Terraform + Kubernetes + CI/CD + observability + security + AI-assisted ops.</p>
-              </div>
-              <div class="resource-item">
-                <span class="resource-type">Depth</span>
-                <p>Pick one primary path and go deep: DevOps platform engineering, SRE, or cloud infrastructure.</p>
-              </div>
-              <div class="resource-item">
-                <span class="resource-type">Proof</span>
-                <p>Employers trust measurable outcomes: lower deployment risk, faster recovery, safer infra changes, and cleaner automation.</p>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="panel" id="roadmap">
-        <div class="legend">
-          <span><i class="i-core"></i> Foundational</span>
-          <span><i class="i-highlight"></i> Core hiring priority</span>
-          <span><i class="i-ai"></i> AI-enabled DevOps</span>
-        </div>
-
-        <div class="roadmap-layout">
-          <div class="roadmap-board">
-            <div class="roadmap" id="roadmapCanvas">
-              <div class="roadmap-title">DevOps 2026 Interactive Roadmap</div>
-
-              <div class="connector h" style="left: 500px; top: 108px; width: 2px;"></div>
-              <div class="connector v" style="left: 501px; top: 108px; height: 76px;"></div>
-              <div class="connector h" style="left: 501px; top: 184px; width: 300px;"></div>
-              <div class="connector h" style="left: 301px; top: 184px; width: 200px;"></div>
-              <div class="connector h" style="left: 801px; top: 184px; width: 210px;"></div>
-              <div class="connector v" style="left: 300px; top: 184px; height: 154px;"></div>
-              <div class="connector v" style="left: 1010px; top: 184px; height: 154px;"></div>
-              <div class="connector h" style="left: 300px; top: 338px; width: 201px;"></div>
-              <div class="connector h" style="left: 801px; top: 338px; width: 209px;"></div>
-              <div class="connector v" style="left: 501px; top: 184px; height: 260px;"></div>
-              <div class="connector v" style="left: 801px; top: 184px; height: 260px;"></div>
-              <div class="connector h" style="left: 501px; top: 444px; width: 300px;"></div>
-              <div class="connector v" style="left: 652px; top: 444px; height: 188px;"></div>
-              <div class="connector h" style="left: 260px; top: 632px; width: 392px;"></div>
-              <div class="connector h" style="left: 652px; top: 632px; width: 388px;"></div>
-              <div class="connector v" style="left: 260px; top: 632px; height: 182px;"></div>
-              <div class="connector v" style="left: 1040px; top: 632px; height: 182px;"></div>
-              <div class="connector h" style="left: 260px; top: 814px; width: 392px;"></div>
-              <div class="connector h" style="left: 652px; top: 814px; width: 388px;"></div>
-              <div class="connector v" style="left: 652px; top: 814px; height: 178px;"></div>
-              <div class="connector h" style="left: 420px; top: 992px; width: 232px;"></div>
-              <div class="connector h" style="left: 652px; top: 992px; width: 230px;"></div>
-
-              <button class="node core active" style="left: 416px; top: 48px;" data-topic="devops-core">DevOps 2026 Core<small>Foundations first, AI layered on top</small></button>
-
-              <button class="node highlight" style="left: 132px; top: 154px;" data-topic="linux">Linux & Shell<small>Processes, logs, permissions, Bash</small></button>
-              <button class="node core" style="left: 416px; top: 154px;" data-topic="networking">Networking<small>DNS, HTTP, TLS, LB, VPC</small></button>
-              <button class="node highlight" style="left: 720px; top: 154px;" data-topic="git">Git & Collaboration<small>PRs, tags, releases, trunk-based flow</small></button>
-              <button class="node core" style="left: 926px; top: 154px;" data-topic="programming">Automation Code<small>Bash, Python, APIs, data handling</small></button>
-
-              <button class="node core" style="left: 132px; top: 308px;" data-topic="containers">Containers<small>Dockerfiles, images, registries</small></button>
-              <button class="node highlight" style="left: 416px; top: 414px;" data-topic="cicd">CI/CD Delivery<small>Test, build, scan, deploy, rollback</small></button>
-              <button class="node core" style="left: 720px; top: 308px;" data-topic="cloud">Cloud Platform<small>AWS, Azure, or GCP depth</small></button>
-              <button class="node highlight" style="left: 926px; top: 308px;" data-topic="iac">Infrastructure as Code<small>Terraform modules, state, drift</small></button>
-
-              <button class="node highlight" style="left: 176px; top: 602px;" data-topic="kubernetes">Kubernetes<small>Pods, services, ingress, Helm</small></button>
-              <button class="node core" style="left: 430px; top: 602px;" data-topic="gitops">GitOps<small>Argo CD / Flux, reconciliation</small></button>
-              <button class="node core" style="left: 748px; top: 602px;" data-topic="security">DevSecOps<small>Secrets, SBOM, policy, provenance</small></button>
-              <button class="node highlight" style="left: 960px; top: 602px;" data-topic="observability">Observability<small>Metrics, logs, traces, SLOs</small></button>
-
-              <button class="node core" style="left: 176px; top: 784px;" data-topic="incident-response">Incident Response<small>Alerts, runbooks, postmortems</small></button>
-              <button class="node highlight" style="left: 430px; top: 784px;" data-topic="release-strategy">Progressive Delivery<small>Canary, blue-green, verification</small></button>
-              <button class="node ai" style="left: 748px; top: 784px;" data-topic="aiops">AIOps & LLMs<small>Log summaries, fix suggestions, runbooks</small></button>
-              <button class="node ai" style="left: 960px; top: 784px;" data-topic="automation-agents">AI Agents<small>Auto-remediation with guardrails</small></button>
-
-              <button class="node ai" style="left: 336px; top: 962px;" data-topic="predictive-deployments">Predictive Deployments<small>Risk scoring and safer releases</small></button>
-              <button class="node highlight" style="left: 652px; top: 962px;" data-topic="platform-engineering">Platform Engineering<small>Golden paths, reusable workflows</small></button>
-            </div>
-          </div>
-
-          <aside class="drawer" id="topicDrawer" aria-live="polite">
-            <div class="drawer-header">
-              <div class="eyebrow" id="drawerCategory">Roadmap Topic</div>
-              <h3 id="drawerTitle" style="margin: 14px 0 10px; font-size: 30px;">DevOps 2026 Core</h3>
-              <p id="drawerSummary">Use the roadmap as a layered system. Learn the base operating model first, then move into delivery automation, reliability, security, and finally AI-assisted operations.</p>
-            </div>
-            <div class="drawer-body">
-              <section>
-                <h4 style="margin: 0 0 10px;">Why it matters</h4>
-                <p id="drawerWhy"></p>
-              </section>
-              <section>
-                <h4 style="margin: 0 0 10px;">Must know</h4>
-                <div class="badge-row" id="drawerMustKnow"></div>
-              </section>
-              <section>
-                <h4 style="margin: 0 0 10px;">Resources</h4>
-                <div class="resource-list" id="drawerResources"></div>
-              </section>
-            </div>
-          </aside>
-        </div>
-      </section>
-    </main>
-
-    <div class="footer-note">
-      Built as a single self-contained HTML file in the current working directory. Open `index.html` in a browser.
-    </div>
+    <div class="footer-note">single-file html / github-pages-friendly / integrated cloud-skills markdown / interactive roadmap</div>
   </div>
 
   <script>
@@ -835,290 +1206,140 @@
 
     tabs.forEach((tab) => {
       tab.addEventListener('click', () => {
-        tabs.forEach((t) => t.classList.remove('active'));
-        panels.forEach((p) => p.classList.remove('active'));
+        tabs.forEach((item) => item.classList.remove('active'));
+        panels.forEach((panel) => panel.classList.remove('active'));
         tab.classList.add('active');
         document.getElementById(tab.dataset.tab).classList.add('active');
       });
     });
 
-    const topicData = {
-      'devops-core': {
-        category: 'Core Path',
-        title: 'DevOps 2026 Core',
-        summary: 'The hireable path is straightforward: master systems and delivery fundamentals first, then use AI to improve speed, quality, and resilience.',
-        why: 'Teams still hire for ownership of real infrastructure, delivery workflows, and production reliability. AI matters most when it helps an already-capable engineer reduce toil and improve operational outcomes.',
-        mustKnow: ['Linux', 'Networking', 'CI/CD', 'Kubernetes', 'Terraform', 'Observability', 'Security', 'AIOps'],
+    const topics = {
+      'devops-2026': {
+        category: 'Core Thesis',
+        title: 'DevOps 2026',
+        summary: 'The broad DevOps market still prioritizes strong systems, cloud, delivery, security, and observability foundations. AI and platform engineering add leverage and differentiation on top of that base.',
+        why: 'This aligns best with current public signals from roadmap.sh, DORA, CNCF, Gartner, and Puppet/Perforce: strong fundamentals first, platform engineering rising, and AI increasingly useful but not universally baseline.',
+        mustKnow: ['Linux and networking', 'Cloud + IAM', 'Containers + Kubernetes', 'CI/CD + rollback', 'Terraform + automation', 'Observability + incident response', 'AI-assisted ops with guardrails'],
         resources: [
-          { type: 'Guide', label: 'Google SRE Book', url: 'https://sre.google/books/' },
-          { type: 'Guide', label: 'AWS Well-Architected', url: 'https://aws.amazon.com/architecture/well-architected/' },
-          { type: 'Roadmap', label: 'DevOps Lifecycle Overview', url: 'https://www.atlassian.com/devops' }
+          { type: 'Roadmap', label: 'roadmap.sh DevOps', url: 'https://roadmap.sh/devops' },
+          { type: 'Guide', label: 'Google SRE Books', url: 'https://sre.google/books/' },
+          { type: 'Landscape', label: 'CNCF Landscape', url: 'https://landscape.cncf.io/' }
         ]
       },
-      linux: {
-        category: 'Foundational',
-        title: 'Linux & Shell',
-        summary: 'You need fluency in the operating system where applications, containers, and automation actually run.',
-        why: 'Debugging deployments and incidents almost always comes back to logs, processes, networking, files, permissions, or shell automation. This is the practical floor of the role.',
-        mustKnow: ['systemd', 'journalctl', 'grep/sed/awk basics', 'permissions', 'ssh', 'Bash scripting'],
-        resources: [
-          { type: 'Course', label: 'The Linux Command Line', url: 'https://linuxcommand.org/tlcl.php' },
-          { type: 'Course', label: 'Introduction to Linux', url: 'https://training.linuxfoundation.org/training/introduction-to-linux/' },
-          { type: 'Reference', label: 'Explainshell', url: 'https://explainshell.com/' }
-        ]
-      },
-      networking: {
-        category: 'Foundational',
-        title: 'Networking',
-        summary: 'Modern DevOps engineers need to understand how packets, names, certificates, and proxies affect reliability and deployment safety.',
-        why: 'Misconfigured DNS, TLS, ingress, routing, firewalls, and load balancing cause real production failures. Strong networking knowledge shortens diagnosis time dramatically.',
-        mustKnow: ['DNS', 'HTTP/HTTPS', 'TLS certs', 'load balancers', 'subnets', 'routing', 'reverse proxies'],
-        resources: [
-          { type: 'Guide', label: 'Cloudflare Learning Center', url: 'https://www.cloudflare.com/learning/' },
-          { type: 'Book', label: 'HTTP: The Definitive Guide', url: 'https://www.oreilly.com/library/view/http-the-definitive/1565925092/' },
-          { type: 'Reference', label: 'DigitalOcean Networking Concepts', url: 'https://www.digitalocean.com/community/tutorials/an-introduction-to-networking-terminology-interfaces-and-protocols' }
-        ]
-      },
-      git: {
-        category: 'Foundational',
-        title: 'Git & Collaboration',
-        summary: 'DevOps work is deeply tied to versioned infrastructure, pipeline code, release flows, and collaborative change review.',
-        why: 'Infrastructure as code, GitOps, and deployment automation all depend on clean change control, repeatability, and readable history.',
-        mustKnow: ['branching', 'rebase vs merge', 'tags', 'release notes', 'PR review', 'trunk-based development'],
-        resources: [
-          { type: 'Book', label: 'Pro Git', url: 'https://git-scm.com/book/en/v2' },
-          { type: 'Guide', label: 'Atlassian Git Tutorials', url: 'https://www.atlassian.com/git/tutorials' },
-          { type: 'Guide', label: 'Trunk-Based Development', url: 'https://trunkbaseddevelopment.com/' }
-        ]
-      },
-      programming: {
-        category: 'Foundational',
-        title: 'Automation Code',
-        summary: 'Shell alone is not enough. Python or Go-style scripting depth helps you automate APIs, data transforms, and incident workflows.',
-        why: 'Strong automation code lets you glue systems together, build tooling, parse outputs, trigger remediations, and validate AI-generated changes safely.',
-        mustKnow: ['Python', 'REST APIs', 'JSON/YAML', 'CLI tooling', 'testing scripts', 'error handling'],
-        resources: [
-          { type: 'Course', label: 'Automate the Boring Stuff with Python', url: 'https://automatetheboringstuff.com/' },
-          { type: 'Guide', label: 'Real Python', url: 'https://realpython.com/' },
-          { type: 'Reference', label: 'httpie', url: 'https://httpie.io/' }
-        ]
-      },
-      containers: {
-        category: 'Core Skill',
-        title: 'Containers',
-        summary: 'Container fluency includes build efficiency, runtime behavior, registry workflows, security, and debugging image-related issues.',
-        why: 'Containers are still the packaging unit for most modern platforms. Understanding image structure and runtime tradeoffs directly impacts cost, speed, and security.',
-        mustKnow: ['Dockerfile layering', 'multi-stage builds', 'image scanning', 'registries', 'distroless images', 'runtime limits'],
-        resources: [
-          { type: 'Guide', label: 'Docker Docs', url: 'https://docs.docker.com/' },
-          { type: 'Guide', label: 'Container Best Practices', url: 'https://cloud.google.com/architecture/best-practices-for-building-containers' },
-          { type: 'Tool', label: 'Dive Image Explorer', url: 'https://github.com/wagoodman/dive' }
-        ]
-      },
-      cicd: {
-        category: 'Core Hiring Priority',
-        title: 'CI/CD Delivery',
-        summary: 'End-to-end delivery design is non-negotiable in 2026. Build systems need to be fast, observable, safe, and rollback-ready.',
-        why: 'The most visible DevOps value comes from reliable software delivery. Employers look for engineers who can reduce lead time without raising deployment risk.',
-        mustKnow: ['pipeline stages', 'artifact management', 'approvals', 'rollback', 'blue-green', 'canary', 'progressive delivery'],
-        resources: [
-          { type: 'Guide', label: 'GitHub Actions Docs', url: 'https://docs.github.com/actions' },
-          { type: 'Guide', label: 'GitLab CI/CD Docs', url: 'https://docs.gitlab.com/ee/ci/' },
-          { type: 'Guide', label: 'Argo Rollouts', url: 'https://argo-rollouts.readthedocs.io/' }
-        ]
-      },
-      cloud: {
-        category: 'Core Skill',
-        title: 'Cloud Platform',
-        summary: 'Go deep on one provider first. Breadth matters later, but depth in one ecosystem is what gets you productive and hireable.',
-        why: 'Real environments are provider-specific. IAM, networking, compute, managed services, and operational tooling vary in important ways.',
-        mustKnow: ['IAM', 'VPC/VNet', 'compute', 'managed DBs', 'object storage', 'cost control', 'logging'],
-        resources: [
-          { type: 'AWS', label: 'AWS Skill Builder', url: 'https://skillbuilder.aws/' },
-          { type: 'Azure', label: 'Microsoft Learn Azure', url: 'https://learn.microsoft.com/azure/' },
-          { type: 'GCP', label: 'Google Cloud Training', url: 'https://cloud.google.com/learn/training' }
-        ]
-      },
-      iac: {
-        category: 'Core Hiring Priority',
-        title: 'Infrastructure as Code',
-        summary: 'IaC is how infrastructure becomes reviewable, repeatable, and scalable across teams and environments.',
-        why: 'Without IaC, environments drift, reviews are weak, and scale becomes painful. Terraform remains one of the clearest signals of DevOps competence.',
-        mustKnow: ['Terraform modules', 'state backends', 'plans', 'drift detection', 'variables', 'policy as code'],
-        resources: [
-          { type: 'Guide', label: 'Terraform Docs', url: 'https://developer.hashicorp.com/terraform/docs' },
-          { type: 'Guide', label: 'Terraform Best Practices', url: 'https://www.terraform-best-practices.com/' },
-          { type: 'Tool', label: 'OpenTofu', url: 'https://opentofu.org/' }
-        ]
-      },
-      kubernetes: {
-        category: 'Core Hiring Priority',
-        title: 'Kubernetes',
-        summary: 'Production-grade Kubernetes skill means more than deploying YAML. You should understand how the platform actually behaves under load and failure.',
-        why: 'Kubernetes still powers a huge share of platform teams and internal developer platforms. Deep debugging ability is highly valued.',
-        mustKnow: ['pods', 'deployments', 'services', 'ingress', 'Helm', 'resource requests', 'events', 'kubectl debugging'],
-        resources: [
-          { type: 'Guide', label: 'Kubernetes Docs', url: 'https://kubernetes.io/docs/home/' },
-          { type: 'Course', label: 'Kubernetes Basics', url: 'https://kubernetes.io/docs/tutorials/kubernetes-basics/' },
-          { type: 'Guide', label: 'Helm Docs', url: 'https://helm.sh/docs/' }
-        ]
-      },
-      gitops: {
-        category: 'Core Skill',
-        title: 'GitOps',
-        summary: 'GitOps turns Git into the desired state authority for clusters and environments.',
-        why: 'This improves auditability, reproducibility, and rollback confidence, especially for Kubernetes-heavy teams and platform engineering groups.',
-        mustKnow: ['desired state', 'reconciliation loops', 'drift', 'Argo CD', 'Flux', 'pull-based deploys'],
-        resources: [
-          { type: 'Guide', label: 'Argo CD Docs', url: 'https://argo-cd.readthedocs.io/' },
-          { type: 'Guide', label: 'Flux Docs', url: 'https://fluxcd.io/docs/' },
-          { type: 'Guide', label: 'OpenGitOps Principles', url: 'https://opengitops.dev/' }
-        ]
-      },
-      security: {
-        category: 'Core Skill',
-        title: 'DevSecOps',
-        summary: 'Security in 2026 is embedded into delivery pipelines, runtime platforms, and software supply chains.',
-        why: 'Teams expect DevOps engineers to own secrets, identity boundaries, image hygiene, provenance, and policy enforcement as part of normal delivery work.',
-        mustKnow: ['secrets management', 'SAST/DAST basics', 'SBOMs', 'signing', 'least privilege', 'admission control'],
-        resources: [
-          { type: 'Guide', label: 'OWASP DevSecOps Guideline', url: 'https://owasp.org/www-project-devsecops-guideline/' },
-          { type: 'Tool', label: 'Trivy', url: 'https://trivy.dev/' },
-          { type: 'Guide', label: 'Sigstore', url: 'https://www.sigstore.dev/' }
-        ]
-      },
-      observability: {
-        category: 'Core Hiring Priority',
-        title: 'Observability',
-        summary: 'You should be able to instrument systems, build useful dashboards, reduce noisy alerts, and tie telemetry to business impact.',
-        why: 'Reliable systems require fast detection and diagnosis. Observability is what makes complex platforms supportable.',
-        mustKnow: ['Prometheus', 'Grafana', 'logs', 'OpenTelemetry', 'traces', 'SLOs', 'alert tuning'],
-        resources: [
-          { type: 'Guide', label: 'Prometheus Docs', url: 'https://prometheus.io/docs/introduction/overview/' },
-          { type: 'Guide', label: 'Grafana Docs', url: 'https://grafana.com/docs/' },
-          { type: 'Guide', label: 'OpenTelemetry Docs', url: 'https://opentelemetry.io/docs/' }
-        ]
-      },
-      'incident-response': {
-        category: 'Reliability',
-        title: 'Incident Response',
-        summary: 'Being hireable means you can respond under pressure: assess blast radius, stabilize, communicate, and learn from failures.',
-        why: 'Production ownership is one of the clearest distinctions between theoretical knowledge and operational competence.',
-        mustKnow: ['severity levels', 'runbooks', 'on-call hygiene', 'rollback', 'communication', 'postmortems'],
-        resources: [
-          { type: 'Guide', label: 'PagerDuty Incident Response', url: 'https://www.pagerduty.com/resources/learn/incident-response/' },
-          { type: 'Book', label: 'Seeking SRE', url: 'https://www.oreilly.com/library/view/seeking-sre/9781491978856/' },
-          { type: 'Guide', label: 'Google Incident Management', url: 'https://sre.google/workbook/incident-response/' }
-        ]
-      },
-      'release-strategy': {
-        category: 'Reliability',
-        title: 'Progressive Delivery',
-        summary: 'Safe releases are a major differentiator. Engineers who can limit blast radius and verify deployments before full rollout are highly valuable.',
-        why: 'Blue-green, canary, feature flags, and automated verification reduce the cost of change while maintaining delivery speed.',
-        mustKnow: ['canary', 'blue-green', 'feature flags', 'health checks', 'verification', 'rollback automation'],
-        resources: [
-          { type: 'Guide', label: 'Argo Rollouts', url: 'https://argo-rollouts.readthedocs.io/' },
-          { type: 'Guide', label: 'LaunchDarkly Guides', url: 'https://launchdarkly.com/guides/' },
-          { type: 'Guide', label: 'Progressive Delivery Foundation', url: 'https://opencd.foundation/' }
-        ]
-      },
-      aiops: {
-        category: 'AI-Enabled DevOps',
-        title: 'AIOps & LLM Integration',
-        summary: 'This is the biggest 2026 differentiator: using AI to accelerate configuration work, debugging, telemetry analysis, and operational response.',
-        why: 'The market increasingly expects DevOps engineers to use AI tools for speed and insight. The best engineers combine AI output with strong technical judgment and safety controls.',
-        mustKnow: ['prompting for infra tasks', 'log summarization', 'config generation', 'change review', 'RAG on runbooks', 'human approval loops'],
-        resources: [
-          { type: 'Guide', label: 'OpenAI API Docs', url: 'https://platform.openai.com/docs/overview' },
-          { type: 'Guide', label: 'GitHub Copilot for Docs', url: 'https://docs.github.com/copilot' },
-          { type: 'Guide', label: 'AWS on Generative AI', url: 'https://aws.amazon.com/generative-ai/' }
-        ]
-      },
-      'automation-agents': {
-        category: 'AI-Enabled DevOps',
-        title: 'AI Agents',
-        summary: 'Agents can monitor systems, propose fixes, and execute bounded actions, but only with strict guardrails and observability.',
-        why: 'The next layer after copilots is autonomous or semi-autonomous operations. Employers will value engineers who can design safe agent workflows with auditability.',
-        mustKnow: ['approval steps', 'blast radius controls', 'tool permissions', 'audit logs', 'fallbacks', 'safe execution boundaries'],
-        resources: [
-          { type: 'Guide', label: 'LangChain Overview', url: 'https://python.langchain.com/docs/introduction/' },
-          { type: 'Guide', label: 'Model Context Protocol', url: 'https://modelcontextprotocol.io/' },
-          { type: 'Guide', label: 'OpenTelemetry for AI systems', url: 'https://opentelemetry.io/' }
-        ]
-      },
-      'predictive-deployments': {
-        category: 'AI-Enabled DevOps',
-        title: 'Predictive Deployments',
-        summary: 'Use historical signals to score deployment risk before release and reduce production failures.',
-        why: 'This is a practical high-value application of AI in DevOps: safer releases, reduced incident rates, and improved deployment confidence.',
-        mustKnow: ['risk scoring', 'test health signals', 'change blast radius', 'deployment telemetry', 'rollback triggers'],
-        resources: [
-          { type: 'Guide', label: 'DORA Metrics', url: 'https://dora.dev/' },
-          { type: 'Guide', label: 'Google Cloud on CI/CD Metrics', url: 'https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery' },
-          { type: 'Guide', label: 'MLOps Principles', url: 'https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning' }
-        ]
-      },
-      'platform-engineering': {
-        category: 'Scaling Path',
-        title: 'Platform Engineering',
-        summary: 'Mature DevOps teams increasingly evolve into platform teams that provide paved roads, reusable tooling, and self-service workflows.',
-        why: 'This is often the long-term career growth path: less ticket-driven work, more product thinking for internal developers, and stronger leverage across the organization.',
-        mustKnow: ['golden paths', 'self-service', 'templates', 'Backstage or portals', 'developer experience', 'platform metrics'],
-        resources: [
-          { type: 'Guide', label: 'Platform Engineering', url: 'https://platformengineering.org/' },
-          { type: 'Tool', label: 'Backstage', url: 'https://backstage.io/' },
-          { type: 'Report', label: 'Humanitec Platform Engineering Reports', url: 'https://humanitec.com/platform-engineering-reports' }
-        ]
-      }
+      programming: { category: 'Foundation', title: 'Programming Languages', summary: 'Automation, platform tooling, and AI integration all depend on real coding ability.', why: 'The strongest DevOps engineers do not just configure tools. They write scripts, APIs, operators, MCP servers, policy checks, and automation glue that keep systems coherent.', mustKnow: ['Python', 'Go', 'Node.js/TypeScript', 'Shell fluency', 'API integration'], resources: [{ type: 'Python', label: 'Real Python', url: 'https://realpython.com/' }, { type: 'Go', label: 'A Tour of Go', url: 'https://go.dev/tour/' }, { type: 'TypeScript', label: 'TypeScript Docs', url: 'https://www.typescriptlang.org/docs/' }] },
+      'os-terminal': { category: 'Foundation', title: 'OS & Terminal', summary: 'Production reality still lives in Linux, shells, files, processes, sockets, and logs.', why: 'Every incident eventually lands in the terminal. Deep operating-system fluency is one of the clearest signals that you can debug without panic.', mustKnow: ['Linux internals', 'Bash', 'Permissions', 'systemd', 'Networking tools', 'Log analysis'], resources: [{ type: 'Book', label: 'The Linux Command Line', url: 'https://linuxcommand.org/tlcl.php' }, { type: 'Guide', label: 'Linux Foundation Intro', url: 'https://training.linuxfoundation.org/training/introduction-to-linux/' }, { type: 'Reference', label: 'explainshell', url: 'https://explainshell.com/' }] },
+      vcs: { category: 'Foundation', title: 'VCS & Collaboration', summary: 'DevOps work is version-controlled infrastructure, reviewed automation, and shared operational knowledge.', why: 'Git is the control plane for modern delivery. GitOps, CI/CD, release management, and change auditing all depend on disciplined collaboration.', mustKnow: ['Git', 'Pull requests', 'Branch strategy', 'Tags and releases', 'Repo hygiene'], resources: [{ type: 'Book', label: 'Pro Git', url: 'https://git-scm.com/book/en/v2' }, { type: 'Guide', label: 'Atlassian Git Tutorials', url: 'https://www.atlassian.com/git/tutorials' }, { type: 'Guide', label: 'Learn Git Branching', url: 'https://learngitbranching.js.org/' }] },
+      containers: { category: 'Core DevOps', title: 'Containers', summary: 'Containers remain the default unit of software packaging and runtime isolation.', why: 'Container knowledge affects security, build performance, image quality, registry workflows, and everything Kubernetes runs.', mustKnow: ['Docker', 'Podman', 'Image layering', 'Registries', 'Runtime limits', 'Non-root images'], resources: [{ type: 'Docs', label: 'Docker Docs', url: 'https://docs.docker.com/' }, { type: 'Guide', label: 'Container Best Practices', url: 'https://cloud.google.com/architecture/best-practices-for-building-containers' }, { type: 'Tool', label: 'Dive', url: 'https://github.com/wagoodman/dive' }] },
+      orchestration: { category: 'Core DevOps', title: 'Container Orchestration', summary: 'Kubernetes knowledge is still a major hiring filter in 2026.', why: 'The market expects production-ready orchestration skills: cluster debugging, Helm, ingress, autoscaling, GitOps sync, and resource tuning.', mustKnow: ['Kubernetes', 'Helm', 'k3s', 'Services', 'Ingress', 'Autoscaling'], resources: [{ type: 'Docs', label: 'Kubernetes Docs', url: 'https://kubernetes.io/docs/home/' }, { type: 'Guide', label: 'Linux Foundation Intro to Kubernetes', url: 'https://training.linuxfoundation.org/training/introduction-to-kubernetes' }, { type: 'Guide', label: 'Helm Docs', url: 'https://helm.sh/docs/' }] },
+      cicd: { category: 'Core DevOps', title: 'CI/CD & GitOps', summary: 'Reliable delivery is still the heart of DevOps value.', why: 'Employers want people who can move software from commit to production with verification, rollback paths, and low release anxiety.', mustKnow: ['GitHub Actions', 'GitLab CI', 'ArgoCD', 'Tekton', 'Canary', 'Rollback design'], resources: [{ type: 'Docs', label: 'GitHub Actions Docs', url: 'https://docs.github.com/actions' }, { type: 'Docs', label: 'GitLab CI Docs', url: 'https://docs.gitlab.com/ee/ci/' }, { type: 'Docs', label: 'ArgoCD Getting Started', url: 'https://argo-cd.readthedocs.io/en/stable/getting_started' }] },
+      iac: { category: 'Core DevOps', title: 'Infrastructure as Code', summary: 'Infrastructure must be declarative, reviewable, repeatable, and safe to evolve.', why: 'Terraform and configuration automation remain key proof points for platform maturity and engineering discipline.', mustKnow: ['Terraform', 'Ansible', 'Pulumi', 'Crossplane', 'State', 'Policy'], resources: [{ type: 'Docs', label: 'Terraform Docs', url: 'https://developer.hashicorp.com/terraform/docs' }, { type: 'Docs', label: 'Crossplane Getting Started', url: 'https://docs.crossplane.io/latest/getting-started' }, { type: 'Docs', label: 'Pulumi Getting Started', url: 'https://www.pulumi.com/docs/get-started' }] },
+      cloud: { category: 'Core DevOps', title: 'Cloud Providers', summary: 'Go deep on one major cloud before chasing broad multi-cloud fluency.', why: 'Real production environments are cloud-specific. IAM, networking, managed services, and cost behavior differ in important ways.', mustKnow: ['AWS or GCP or Azure', 'IAM', 'Compute', 'Networking', 'Storage', 'Managed services'], resources: [{ type: 'AWS', label: 'AWS Skill Builder', url: 'https://skillbuilder.aws/' }, { type: 'GCP', label: 'Google Cloud Training', url: 'https://cloud.google.com/learn/training' }, { type: 'Azure', label: 'Microsoft Learn Azure', url: 'https://learn.microsoft.com/azure/' }] },
+      'network-security': { category: 'Core DevOps', title: 'Networking & Security', summary: 'The best DevOps engineers understand the network and protect the platform without slowing it down.', why: 'TLS, VPNs, RBAC, service exposure, and identity boundaries are constant sources of failure and risk. Mastery here prevents incidents and reduces blind spots.', mustKnow: ['WireGuard', 'TLS', 'RBAC', 'DNS', 'Ingress', 'Secrets', 'Least privilege'], resources: [{ type: 'Guide', label: 'Cloudflare Learning Center', url: 'https://www.cloudflare.com/learning/' }, { type: 'WireGuard', label: 'WireGuard Docs', url: 'https://www.wireguard.com/' }, { type: 'Security', label: 'OWASP DevSecOps Guideline', url: 'https://owasp.org/www-project-devsecops-guideline/' }] },
+      monitoring: { category: 'Core DevOps', title: 'Monitoring & Observability', summary: 'If you cannot see it, you cannot operate it.', why: 'Metrics, logs, traces, SLOs, and telemetry pipelines are what turn complex systems into manageable systems.', mustKnow: ['Prometheus', 'Grafana', 'OpenTelemetry', 'Loki', 'Tracing', 'Alerting'], resources: [{ type: 'Docs', label: 'Prometheus Docs', url: 'https://prometheus.io/docs/introduction/overview/' }, { type: 'Docs', label: 'Grafana Tutorials', url: 'https://grafana.com/tutorials/' }, { type: 'Docs', label: 'OpenTelemetry Docs', url: 'https://opentelemetry.io/docs/' }] },
+      'platform-engineering': { category: 'Emerging Platform', title: 'Platform Engineering', summary: 'Mature DevOps teams evolve into platform teams that build golden paths and reusable infrastructure products.', why: 'This is where DevOps scales. Instead of repeated ticket work, you create leverage across engineering through paved roads and self-service systems.', mustKnow: ['Developer portals', 'Golden paths', 'Templates', 'Self-service infra', 'DX metrics'], resources: [{ type: 'Platform', label: 'PlatformEngineering.org', url: 'https://platformengineering.org/' }, { type: 'Tool', label: 'Backstage', url: 'https://backstage.io/' }, { type: 'Guide', label: 'FluxCD Guide', url: 'https://fluxcd.io/flux/get-started' }] },
+      llmops: { category: 'Advanced AI Layer', title: 'LLMOps', summary: 'For AI-heavy organizations, LLMOps is a strong differentiator. For the broader DevOps market, it is an advanced specialization layered on top of standard platform skills.', why: 'LLM systems introduce new failure modes: latency spikes, token cost, prompt drift, retrieval errors, evaluation gaps, and model lifecycle complexity.', mustKnow: ['LangGraph', 'LangSmith', 'MLflow', 'Prompt management', 'Model evaluation', 'Tracing'], resources: [{ type: 'Docs', label: 'LangGraph Docs', url: 'https://langchain-ai.github.io/langgraph/' }, { type: 'Docs', label: 'LangSmith Docs', url: 'https://docs.smith.langchain.com/' }, { type: 'Docs', label: 'MLflow Docs', url: 'https://mlflow.org/docs/latest/' }] },
+      'model-serving': { category: 'Advanced AI Layer', title: 'Model Serving', summary: 'Model serving is increasingly relevant in AI platform teams. It is important, but it is not a universal baseline for every DevOps role.', why: 'Inference is now production infrastructure for AI products. Teams need engineers who can deploy and monitor models with the same operational maturity expected of any critical service.', mustKnow: ['vLLM', 'Ollama', 'TGI', 'KServe', 'Ray Serve', 'Inference metrics'], resources: [{ type: 'Docs', label: 'vLLM Docs', url: 'https://docs.vllm.ai/' }, { type: 'Docs', label: 'KServe Getting Started', url: 'https://kserve.github.io/website/get_started' }, { type: 'Docs', label: 'Ray Serve', url: 'https://docs.ray.io/en/latest/serve/index.html' }] },
+      rag: { category: 'Advanced AI Layer', title: 'RAG Pipelines', summary: 'RAG is common in enterprise AI systems and useful for AI-platform-oriented DevOps engineers, but it should be treated as an advanced specialization rather than a universal foundation.', why: 'RAG requires operational ownership of embeddings, vector stores, retrieval latency, indexing jobs, and evaluation.', mustKnow: ['Chunking', 'Embeddings', 'Retrieval', 'Reranking', 'Vector DB ops', 'RAG evaluation'], resources: [{ type: 'Guide', label: 'LangChain RAG Tutorials', url: 'https://python.langchain.com/docs/tutorials/rag/' }, { type: 'Guide', label: 'LlamaIndex Docs', url: 'https://docs.llamaindex.ai/' }, { type: 'Guide', label: 'RAGAS', url: 'https://docs.ragas.io/' }] },
+      aws: { category: 'Cloud', title: 'AWS', summary: 'Still the most common cloud hiring target for DevOps roles.', why: 'EKS, IAM, VPC, EC2, S3, RDS, CloudWatch, and ECR show up across job descriptions and real-world production stacks.', mustKnow: ['IAM', 'EKS', 'VPC', 'EC2', 'S3', 'RDS', 'CloudWatch'], resources: [{ type: 'Docs', label: 'AWS Docs', url: 'https://docs.aws.amazon.com/' }, { type: 'Guide', label: 'AWS Well-Architected', url: 'https://aws.amazon.com/architecture/well-architected/' }, { type: 'Serverless', label: 'AWS Lambda Getting Started', url: 'https://docs.aws.amazon.com/lambda/latest/dg/getting-started' }] },
+      gcp: { category: 'Cloud', title: 'GCP', summary: 'A strong option for cloud-native and AI-forward teams, especially around Kubernetes and managed AI services.', why: 'GKE, Cloud Run, IAM, and Vertex AI make GCP especially relevant for teams blending DevOps with AI platforms.', mustKnow: ['GKE', 'Cloud Run', 'IAM', 'Cloud Storage', 'Cloud SQL', 'Vertex AI'], resources: [{ type: 'Docs', label: 'GCP Docs', url: 'https://cloud.google.com/docs' }, { type: 'Guide', label: 'GKE Best Practices', url: 'https://cloud.google.com/kubernetes-engine/docs/best-practices' }, { type: 'Functions', label: 'Google Cloud Functions Docs', url: 'https://cloud.google.com/functions/docs' }] },
+      azure: { category: 'Cloud', title: 'Azure', summary: 'Still highly relevant in enterprise environments, regulated sectors, and Microsoft-heavy organizations.', why: 'Azure DevOps, AKS, Entra ID, and broad enterprise adoption keep Azure highly valuable in the hiring market.', mustKnow: ['AKS', 'Entra ID / IAM', 'VNets', 'Azure DevOps', 'Storage', 'Monitor'], resources: [{ type: 'Docs', label: 'Azure Docs', url: 'https://learn.microsoft.com/azure/' }, { type: 'Learning', label: 'Microsoft Learn Azure', url: 'https://learn.microsoft.com/training/azure/' }, { type: 'Guide', label: 'AKS Docs', url: 'https://learn.microsoft.com/azure/aks/' }] },
+      'vector-db': { category: 'Advanced AI Layer', title: 'Vector Databases', summary: 'Vector stores are now operational infrastructure, not just application libraries.', why: 'They determine retrieval speed, indexing behavior, recall quality, and cost for many AI systems.', mustKnow: ['pgvector', 'Qdrant', 'Indexing', 'Query latency', 'Recall tradeoffs'], resources: [{ type: 'Docs', label: 'pgvector', url: 'https://github.com/pgvector/pgvector' }, { type: 'Docs', label: 'Qdrant Docs', url: 'https://qdrant.tech/documentation/' }] },
+      terraform: { category: 'IaC', title: 'Terraform', summary: 'The clearest signal that you can manage infrastructure with repeatability and reviewability.', why: 'Terraform remains one of the most recognizable and practical hiring filters in DevOps.', mustKnow: ['Modules', 'State', 'Plans', 'Backends', 'Drift', 'Variables'], resources: [{ type: 'Docs', label: 'Terraform Docs', url: 'https://developer.hashicorp.com/terraform/docs' }, { type: 'Course', label: 'Terraform for Beginners', url: 'https://kodekloud.com/courses/terraform-for-beginners' }, { type: 'Tool', label: 'OpenTofu', url: 'https://opentofu.org/' }] },
+      ansible: { category: 'IaC', title: 'Ansible', summary: 'Still one of the most practical tools for configuration management and day-two automation.', why: 'It remains useful for servers, bootstrap tasks, and environments where declarative infra still needs procedural configuration.', mustKnow: ['Playbooks', 'Roles', 'Templates', 'Inventories', 'Idempotency'], resources: [{ type: 'Docs', label: 'Ansible Docs', url: 'https://docs.ansible.com/' }, { type: 'Book', label: 'Ansible for DevOps', url: 'https://www.ansiblefordevops.com/' }] },
+      pulumi: { category: 'IaC', title: 'Pulumi', summary: 'Pulumi is compelling when teams want typed, software-engineering-friendly infrastructure code.', why: 'TypeScript and Python-first teams often prefer Pulumi for stronger language ergonomics and shared abstractions.', mustKnow: ['Typed IaC', 'Stacks', 'Providers', 'Secrets', 'Policy patterns'], resources: [{ type: 'Docs', label: 'Pulumi Docs', url: 'https://www.pulumi.com/docs/' }, { type: 'Guide', label: 'Pulumi Examples', url: 'https://github.com/pulumi/examples' }] },
+      mcp: { category: 'Advanced AI Layer', title: 'Model Context Protocol', summary: 'MCP is becoming a common standard for tool-aware AI systems and agent integrations.', why: 'DevOps engineers can expose infrastructure, cluster actions, observability data, and repositories through MCP in safer, structured ways.', mustKnow: ['MCP servers', 'Schemas', 'Tool boundaries', 'Auth', 'Auditability'], resources: [{ type: 'Docs', label: 'Model Context Protocol', url: 'https://modelcontextprotocol.io/' }, { type: 'Examples', label: 'MCP Servers Repo', url: 'https://github.com/modelcontextprotocol/servers' }] },
+      'ai-agents': { category: 'Advanced AI Layer', title: 'AI Agents', summary: 'The next step after copilots is bounded operational autonomy, but this should be adopted carefully and behind explicit controls.', why: 'Teams are using agents for incident triage, deployment review, documentation, and repetitive remediation. The differentiator is doing this safely.', mustKnow: ['Tool use', 'Guardrails', 'Approval loops', 'Runbook execution', 'Fallback paths'], resources: [{ type: 'Docs', label: 'LangGraph', url: 'https://langchain-ai.github.io/langgraph/' }, { type: 'Guide', label: 'Model Context Protocol', url: 'https://modelcontextprotocol.io/' }] },
+      'ai-observability': { category: 'Advanced AI Layer', title: 'AI Observability', summary: 'LLM systems need their own observability discipline: prompts, latency, tokens, retrieval quality, and cost.', why: 'Without AI-specific telemetry, teams cannot explain failures, tune cost, or improve output quality systematically.', mustKnow: ['Tracing', 'Prompt logs', 'Token metrics', 'Latency', 'Cost attribution', 'Evaluation signals'], resources: [{ type: 'Tool', label: 'LangFuse', url: 'https://langfuse.com/' }, { type: 'Tool', label: 'Helicone', url: 'https://www.helicone.ai/' }, { type: 'Guide', label: 'OpenTelemetry Demo', url: 'https://github.com/open-telemetry/opentelemetry-demo' }] },
+      'future-ops': { category: 'Advanced AI Layer', title: 'Autonomous Ops', summary: 'The future direction is semi-autonomous systems that recommend or execute bounded operational actions, but most teams in 2026 still need strong human-centered operating models.', why: 'This is where AI meets platform engineering most directly: safe auto-remediation, predictive deploy gating, and agent-powered operations with human oversight.', mustKnow: ['Risk scoring', 'Auto-remediation', 'Policy checks', 'Human approval', 'Audit trails'], resources: [{ type: 'Guide', label: 'DORA', url: 'https://dora.dev/' }, { type: 'Guide', label: 'Google SRE Workbook', url: 'https://sre.google/workbook/table-of-contents/' }] },
+      python: { category: 'Programming', title: 'Python', summary: 'The most practical DevOps language for automation and AI integration.', why: 'Python powers scripts, APIs, ML tooling, automation glue, and many AI frameworks.', mustKnow: ['Automation scripts', 'APIs', 'FastAPI', 'JSON/YAML handling'], resources: [{ type: 'Guide', label: 'Automate the Boring Stuff', url: 'https://automatetheboringstuff.com/' }, { type: 'Guide', label: 'Real Python', url: 'https://realpython.com/' }] },
+      go: { category: 'Programming', title: 'Go', summary: 'The language behind much of cloud-native infrastructure.', why: 'Reading and writing Go helps you understand Kubernetes, Prometheus, and other foundational tools more deeply.', mustKnow: ['Concurrency', 'CLI tools', 'HTTP services', 'Cloud-native patterns'], resources: [{ type: 'Guide', label: 'A Tour of Go', url: 'https://go.dev/tour/' }] },
+      rust: { category: 'Programming', title: 'Rust', summary: 'An emerging systems language with growing interest in performance-sensitive tooling.', why: 'Not mandatory, but valuable for engineers who want deeper systems credibility or modern infra tooling exposure.', mustKnow: ['Ownership model', 'CLI tooling', 'Performance focus'], resources: [{ type: 'Guide', label: 'The Rust Book', url: 'https://doc.rust-lang.org/book/' }] },
+      nodejs: { category: 'Programming', title: 'JS / Node.js', summary: 'Important for developer tooling, modern automation, and protocol integrations such as MCP.', why: 'A lot of tooling around agents, wrappers, CLIs, and platform experiences lands in TypeScript.', mustKnow: ['TypeScript', 'Async flows', 'Tooling scripts'], resources: [{ type: 'Docs', label: 'Node.js Docs', url: 'https://nodejs.org/en/docs' }, { type: 'Docs', label: 'TypeScript Docs', url: 'https://www.typescriptlang.org/docs/' }] },
+      linux: { category: 'OS', title: 'Linux', summary: 'The real operating environment for most DevOps work.', why: 'Processes, networking, cgroups, filesystems, and permissions are constant operational realities.', mustKnow: ['systemd', 'journalctl', 'ssh', 'filesystems'], resources: [{ type: 'Guide', label: 'Linux Journey', url: 'https://linuxjourney.com/' }] },
+      bash: { category: 'OS', title: 'Bash', summary: 'Still the most immediate automation tool in ops.', why: 'For quick pipelines, system tasks, bootstrap logic, and debugging, Bash remains indispensable.', mustKnow: ['Pipes', 'Variables', 'Functions'], resources: [{ type: 'Guide', label: 'Bash Guide', url: 'https://mywiki.wooledge.org/BashGuide' }] },
+      fish: { category: 'OS', title: 'Fish', summary: 'A modern shell with a smoother interactive UX.', why: 'Useful for personal productivity, though Bash remains the deployment and automation baseline.', mustKnow: ['Interactive shell ergonomics'], resources: [{ type: 'Docs', label: 'Fish Shell', url: 'https://fishshell.com/' }] },
+      git: { category: 'VCS', title: 'Git', summary: 'The base collaboration primitive for infrastructure and delivery.', why: 'Without Git fluency, infrastructure-as-code and GitOps workflows break down quickly.', mustKnow: ['Commits', 'Branches', 'Rebase', 'Tags'], resources: [{ type: 'Book', label: 'Pro Git', url: 'https://git-scm.com/book/en/v2' }] },
+      github: { category: 'VCS', title: 'GitHub', summary: 'Still the most common repo and workflow hub for startups and open-source ecosystems.', why: 'GitHub combines source control, PR review, Actions, packages, and collaboration in one place.', mustKnow: ['PRs', 'Actions', 'Branch protection'], resources: [{ type: 'Docs', label: 'GitHub Docs', url: 'https://docs.github.com/' }] },
+      gitlab: { category: 'VCS', title: 'GitLab', summary: 'A strong integrated platform for code, CI/CD, packages, and enterprise workflows.', why: 'Many teams prefer the all-in-one operational model and self-hosting flexibility of GitLab.', mustKnow: ['Merge requests', 'Pipelines', 'Runners'], resources: [{ type: 'Docs', label: 'GitLab Docs', url: 'https://docs.gitlab.com/' }] },
+      docker: { category: 'Containers', title: 'Docker', summary: 'The default build and packaging workflow for containers.', why: 'Image structure and build efficiency shape deployment speed and security quality.', mustKnow: ['Dockerfiles', 'Build cache', 'Multi-stage builds'], resources: [{ type: 'Docs', label: 'Docker Docs', url: 'https://docs.docker.com/' }] },
+      lxc: { category: 'Containers', title: 'LXC', summary: 'More niche than Docker but useful for understanding OS-level containerization.', why: 'Good to know conceptually, though less central than Docker or Podman for most DevOps roles.', mustKnow: ['Linux containers'], resources: [{ type: 'Docs', label: 'Linux Containers', url: 'https://linuxcontainers.org/' }] },
+      podman: { category: 'Containers', title: 'Podman', summary: 'A daemonless container engine that matters especially in rootless and enterprise contexts.', why: 'Podman is often preferred where security and rootless workflows matter.', mustKnow: ['Rootless containers', 'OCI compatibility'], resources: [{ type: 'Docs', label: 'Podman Docs', url: 'https://podman.io/docs' }] },
+      'prompt-engineering': { category: 'AI Layer', title: 'Prompt Engineering', summary: 'Prompting is now part of operational effectiveness, not just experimentation.', why: 'Better prompts mean better runbook generation, config summarization, incident explanation, and lower wasted cycles.', mustKnow: ['Structured prompts', 'System instructions', 'Evaluation'], resources: [{ type: 'Guide', label: 'OpenAI Prompting Guide', url: 'https://platform.openai.com/docs/guides/prompt-engineering' }] },
+      'prompt-design': { category: 'AI Layer', title: 'Prompt Design', summary: 'Strong prompt design improves reliability and reduces ambiguous AI output.', why: 'Ops workflows need precise answers, not vague output.', mustKnow: ['Constraint setting', 'Few-shot design'], resources: [{ type: 'Guide', label: 'Anthropic Docs', url: 'https://docs.anthropic.com/' }] },
+      evals: { category: 'AI Layer', title: 'AI Evals', summary: 'Evaluation is what separates demos from production-grade AI systems.', why: 'Teams need evidence that prompts, retrieval, and agents are improving instead of drifting.', mustKnow: ['Test sets', 'Quality metrics', 'Regression tracking'], resources: [{ type: 'Guide', label: 'OpenAI Evals', url: 'https://github.com/openai/evals' }] },
+      kubernetes: { category: 'Orchestration', title: 'Kubernetes', summary: 'Still one of the clearest platform depth signals.', why: 'Most modern platform stacks run here, including many AI inference workloads.', mustKnow: ['Pods', 'Deployments', 'Services', 'Ingress', 'Debugging'], resources: [{ type: 'Docs', label: 'Kubernetes Docs', url: 'https://kubernetes.io/docs/home/' }] },
+      helm: { category: 'Orchestration', title: 'Helm', summary: 'The practical packaging layer for Kubernetes applications.', why: 'Most real-world clusters depend on Helm charts for deployment and operations.', mustKnow: ['Charts', 'Values', 'Releases'], resources: [{ type: 'Docs', label: 'Helm Docs', url: 'https://helm.sh/docs/' }] },
+      k3s: { category: 'Orchestration', title: 'k3s', summary: 'A lightweight Kubernetes distribution useful for labs, edge, and fast local experimentation.', why: 'Great for learning and low-overhead platform setups.', mustKnow: ['Lightweight clusters'], resources: [{ type: 'Docs', label: 'k3s Docs', url: 'https://docs.k3s.io/' }] },
+      'github-actions': { category: 'CI/CD', title: 'GitHub Actions', summary: 'A widely used CI/CD layer integrated directly into GitHub.', why: 'Common, practical, and expected across many teams.', mustKnow: ['Workflows', 'Runners', 'Caching', 'OIDC'], resources: [{ type: 'Docs', label: 'GitHub Actions Docs', url: 'https://docs.github.com/actions' }] },
+      'gitlab-ci': { category: 'CI/CD', title: 'GitLab CI', summary: 'Strong CI/CD with integrated repository and environment workflows.', why: 'A frequent enterprise and self-hosted choice.', mustKnow: ['Pipelines', 'Stages', 'Runners'], resources: [{ type: 'Docs', label: 'GitLab CI Docs', url: 'https://docs.gitlab.com/ee/ci/' }] },
+      argocd: { category: 'CI/CD', title: 'ArgoCD', summary: 'One of the most widely used GitOps tools for Kubernetes.', why: 'Desired state sync and deployment auditability make it a major platform skill.', mustKnow: ['Applications', 'Sync', 'Drift detection'], resources: [{ type: 'Docs', label: 'ArgoCD Docs', url: 'https://argo-cd.readthedocs.io/' }, { type: 'Examples', label: 'ArgoCD Example Apps', url: 'https://github.com/argoproj/argocd-example-apps' }] },
+      tekton: { category: 'CI/CD', title: 'Tekton', summary: 'A Kubernetes-native pipeline framework with strong extensibility.', why: 'Useful in cloud-native environments that want pipelines as cluster primitives.', mustKnow: ['PipelineRun', 'Task', 'Triggers'], resources: [{ type: 'Docs', label: 'Tekton Docs', url: 'https://tekton.dev/docs/' }] },
+      wireguard: { category: 'Networking', title: 'WireGuard', summary: 'A modern VPN standard with simplicity and strong performance.', why: 'Private infrastructure access and hybrid connectivity still matter.', mustKnow: ['Tunnel config', 'Key pairs', 'Routing'], resources: [{ type: 'Docs', label: 'WireGuard Docs', url: 'https://www.wireguard.com/' }] },
+      tls: { category: 'Networking', title: 'SSL / TLS', summary: 'Transport security is baseline platform literacy.', why: 'Certificates and encryption failures cause major production pain.', mustKnow: ['Certificates', 'Chains', 'mTLS'], resources: [{ type: 'Guide', label: 'Cloudflare TLS Guide', url: 'https://www.cloudflare.com/learning/ssl/what-is-ssl/' }] },
+      rbac: { category: 'Security', title: 'RBAC', summary: 'Authorization boundaries are critical in clusters, clouds, and internal tooling.', why: 'Least privilege is a habit, not a checkbox.', mustKnow: ['Roles', 'Bindings', 'Permissions'], resources: [{ type: 'Guide', label: 'Kubernetes RBAC', url: 'https://kubernetes.io/docs/reference/access-authn-authz/rbac/' }] },
+      prometheus: { category: 'Observability', title: 'Prometheus', summary: 'The default metrics system for cloud-native operations.', why: 'You need it for alerting, SLOs, service health, and AI workload telemetry.', mustKnow: ['Scraping', 'PromQL', 'Alerts'], resources: [{ type: 'Docs', label: 'Prometheus Docs', url: 'https://prometheus.io/docs/introduction/overview/' }] },
+      grafana: { category: 'Observability', title: 'Grafana', summary: 'The operational interface for dashboards and visual understanding.', why: 'It is the shared screen for platform teams during both calm periods and incidents.', mustKnow: ['Dashboards', 'Panels', 'Alerting'], resources: [{ type: 'Docs', label: 'Grafana Docs', url: 'https://grafana.com/docs/' }] },
+      opentelemetry: { category: 'Observability', title: 'OpenTelemetry', summary: 'A major standard for traces, metrics, and telemetry pipelines.', why: 'It is increasingly central for both microservice observability and AI tracing.', mustKnow: ['OTLP', 'Collectors', 'Tracing'], resources: [{ type: 'Docs', label: 'OpenTelemetry Docs', url: 'https://opentelemetry.io/docs/' }] },
+      loki: { category: 'Observability', title: 'Loki', summary: 'A strong log aggregation option in Kubernetes-heavy environments.', why: 'Logs remain essential during incidents, even in metrics-rich systems.', mustKnow: ['Labels', 'Queries', 'Retention'], resources: [{ type: 'Docs', label: 'Loki Docs', url: 'https://grafana.com/docs/loki/latest/' }] },
+      vllm: { category: 'Model Serving', title: 'vLLM', summary: 'A high-throughput model server now common in self-hosted inference stacks.', why: 'Teams running their own inference increasingly need engineers who understand GPU-aware serving layers.', mustKnow: ['Serving', 'GPU usage', 'Metrics', 'Concurrency'], resources: [{ type: 'Docs', label: 'vLLM Docs', url: 'https://docs.vllm.ai/' }, { type: 'Course', label: 'NVIDIA Learn Courses', url: 'https://learn.nvidia.com/courses' }] },
+      ollama: { category: 'Model Serving', title: 'Ollama', summary: 'Practical local and low-scale model serving for development and experimentation.', why: 'Useful for teams building local AI workflows, tests, and developer environments.', mustKnow: ['Local serving', 'Models', 'OpenAI-compatible interfaces'], resources: [{ type: 'Docs', label: 'Ollama Docs', url: 'https://ollama.com/docs' }] },
+      tgi: { category: 'Model Serving', title: 'TGI', summary: 'A Hugging Face serving system for text generation workloads.', why: 'Relevant for teams standardizing on Hugging Face infrastructure and model ops.', mustKnow: ['Serving APIs', 'Scaling', 'Inference deployment'], resources: [{ type: 'Docs', label: 'TGI Docs', url: 'https://huggingface.co/docs/text-generation-inference/index' }] },
+      langgraph: { category: 'LLMOps', title: 'LangGraph', summary: 'A major framework for agentic and stateful AI workflows.', why: 'Useful for multi-step operational AI workflows such as incident triage and automation chains.', mustKnow: ['State graphs', 'Agent loops', 'Tool calling'], resources: [{ type: 'Docs', label: 'LangGraph Docs', url: 'https://langchain-ai.github.io/langgraph/' }] },
+      langsmith: { category: 'LLMOps', title: 'LangSmith', summary: 'A practical environment for tracing and evaluating LLM application behavior.', why: 'Visibility and debugging matter for production AI systems, especially with complex flows.', mustKnow: ['Tracing', 'Evaluation', 'Prompt debugging'], resources: [{ type: 'Docs', label: 'LangSmith Docs', url: 'https://docs.smith.langchain.com/' }] },
+      pgvector: { category: 'Vector DB', title: 'pgvector', summary: 'A pragmatic option for retrieval systems already centered on PostgreSQL.', why: 'Many teams prefer fewer moving parts, and pgvector often fits that operationally.', mustKnow: ['Indexes', 'Embeddings', 'Latency tradeoffs'], resources: [{ type: 'Docs', label: 'pgvector', url: 'https://github.com/pgvector/pgvector' }] },
+      qdrant: { category: 'Vector DB', title: 'Qdrant', summary: 'A dedicated vector database with solid retrieval features and operational clarity.', why: 'Useful when vector search is central enough to deserve its own system.', mustKnow: ['Collections', 'Search tuning', 'Operations'], resources: [{ type: 'Docs', label: 'Qdrant Docs', url: 'https://qdrant.tech/documentation/' }] },
+      'mcp-servers': { category: 'MCP', title: 'MCP Servers', summary: 'The practical tool layer behind model context integrations.', why: 'Useful for exposing infrastructure and operational actions to AI systems in structured ways.', mustKnow: ['Tool schemas', 'Server design', 'Permissions'], resources: [{ type: 'Examples', label: 'MCP Servers Repo', url: 'https://github.com/modelcontextprotocol/servers' }] },
+      'tool-use': { category: 'MCP', title: 'Tool Use', summary: 'Agent effectiveness depends on which tools are exposed and how safely they are invoked.', why: 'This is where AI systems touch real operations, which makes boundaries and validation critical.', mustKnow: ['Action boundaries', 'Validation', 'Approvals'], resources: [{ type: 'Guide', label: 'Model Context Protocol', url: 'https://modelcontextprotocol.io/' }] },
+      langfuse: { category: 'AI Observability', title: 'LangFuse', summary: 'A strong option for observing prompts, traces, and AI application behavior.', why: 'Useful for debugging, quality tuning, and operational visibility in production AI systems.', mustKnow: ['Prompt traces', 'Latency', 'Feedback loops'], resources: [{ type: 'Tool', label: 'LangFuse', url: 'https://langfuse.com/' }] },
+      'token-metering': { category: 'AI Observability', title: 'Token Metering', summary: 'Tracking token usage is operationally important for cost and fairness.', why: 'Without metering, AI workloads can become expensive and opaque very quickly.', mustKnow: ['Token counting', 'Cost attribution', 'Per-tenant usage'], resources: [{ type: 'Tool', label: 'tiktoken', url: 'https://github.com/openai/tiktoken' }] }
     };
 
-    const drawerCategory = document.getElementById('drawerCategory');
-    const drawerTitle = document.getElementById('drawerTitle');
-    const drawerSummary = document.getElementById('drawerSummary');
-    const drawerWhy = document.getElementById('drawerWhy');
-    const drawerMustKnow = document.getElementById('drawerMustKnow');
-    const drawerResources = document.getElementById('drawerResources');
-    const nodes = document.querySelectorAll('.node');
+    const sidebarCategory = document.getElementById('sidebarCategory');
+    const sidebarTitle = document.getElementById('sidebarTitle');
+    const sidebarSummary = document.getElementById('sidebarSummary');
+    const sidebarWhy = document.getElementById('sidebarWhy');
+    const sidebarMustKnow = document.getElementById('sidebarMustKnow');
+    const sidebarResources = document.getElementById('sidebarResources');
+    const nodes = document.querySelectorAll('.node[data-topic]');
 
     function renderTopic(key) {
-      const topic = topicData[key];
+      const topic = topics[key];
       if (!topic) return;
 
-      drawerCategory.textContent = topic.category;
-      drawerTitle.textContent = topic.title;
-      drawerSummary.textContent = topic.summary;
-      drawerWhy.textContent = topic.why;
+      sidebarCategory.textContent = topic.category;
+      sidebarTitle.textContent = topic.title;
+      sidebarSummary.textContent = topic.summary;
+      sidebarWhy.textContent = topic.why;
 
-      drawerMustKnow.innerHTML = '';
+      sidebarMustKnow.innerHTML = '';
       topic.mustKnow.forEach((item) => {
-        const badge = document.createElement('span');
-        badge.className = 'badge';
-        badge.textContent = item;
-        drawerMustKnow.appendChild(badge);
+        const el = document.createElement('div');
+        el.className = 'insight';
+        el.textContent = item;
+        sidebarMustKnow.appendChild(el);
       });
 
-      drawerResources.innerHTML = '';
+      sidebarResources.innerHTML = '';
       topic.resources.forEach((resource) => {
-        const item = document.createElement('div');
-        item.className = 'resource-item';
-        item.innerHTML = `
+        const el = document.createElement('div');
+        el.className = 'resource';
+        el.innerHTML = `
           <div class="resource-type">${resource.type}</div>
           <div><a href="${resource.url}" target="_blank" rel="noreferrer">${resource.label}</a></div>
         `;
-        drawerResources.appendChild(item);
+        sidebarResources.appendChild(el);
       });
     }
 
     nodes.forEach((node) => {
       node.addEventListener('click', () => {
-        nodes.forEach((n) => n.classList.remove('active'));
+        nodes.forEach((item) => item.classList.remove('active'));
         node.classList.add('active');
         renderTopic(node.dataset.topic);
       });
     });
 
-    renderTopic('devops-core');
+    renderTopic('devops-2026');
   </script>
 </body>
 </html>
